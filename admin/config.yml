@@ -1,0 +1,93 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+locale: "sv"
+
+collections:
+  - name: "settings"
+    label: "Inställningar"
+    files:
+      - name: "hero"
+        label: "Hero / Startsida"
+        file: "content/hero.json"
+        fields:
+          - { label: "Rubrik rad 1", name: "title_line1", widget: "string", default: "Blommor, grönsaker" }
+          - { label: "Rubrik rad 2", name: "title_line2", widget: "string", default: "och hjärta — direkt" }
+          - { label: "Rubrik rad 3", name: "title_line3", widget: "string", default: "från trädgården" }
+          - { label: "Underrubrik", name: "subtitle", widget: "text" }
+          - { label: "Badge-text", name: "badge", widget: "string", default: "🌿 Munkedal, Bohuslän" }
+          - { label: "Hero-bakgrundsbild", name: "hero_image", widget: "image", required: false }
+
+      - name: "about"
+        label: "Om mig"
+        file: "content/about.json"
+        fields:
+          - { label: "Porträttbild", name: "portrait", widget: "image" }
+          - { label: "Rubrik", name: "title", widget: "string", default: "Hej, jag är Elisa" }
+          - { label: "Text (stycke 1)", name: "text1", widget: "text" }
+          - { label: "Text (stycke 2)", name: "text2", widget: "text" }
+          - { label: "Text (stycke 3)", name: "text3", widget: "text" }
+          - { label: "Text (stycke 4)", name: "text4", widget: "text" }
+          - label: "Taggar"
+            name: "tags"
+            widget: "list"
+            field: { label: "Tagg", name: "tag", widget: "string" }
+
+      - name: "blommor"
+        label: "Blommor"
+        file: "content/blommor.json"
+        fields:
+          - { label: "Rubrik", name: "title", widget: "string", default: "Blommor" }
+          - { label: "Beskrivning", name: "description", widget: "text" }
+          - { label: "Bild 1", name: "image1", widget: "image" }
+          - { label: "Bild 2", name: "image2", widget: "image" }
+          - { label: "Visa självplock-banner", name: "show_sjalvplock", widget: "boolean", default: true }
+          - { label: "Självplock — rubrik", name: "sjalvplock_title", widget: "string", default: "Nästa självplock" }
+          - { label: "Självplock — text", name: "sjalvplock_text", widget: "string", default: "Datum meddelas snart — Följ mig på Instagram för att inte missa nästa tillfälle!" }
+
+      - name: "gronsaker"
+        label: "Grönsaker"
+        file: "content/gronsaker.json"
+        fields:
+          - { label: "Rubrik", name: "title", widget: "string", default: "Grönsaker" }
+          - { label: "Beskrivning", name: "description", widget: "text" }
+          - { label: "Bild 1", name: "image1", widget: "image" }
+          - { label: "Bild 2", name: "image2", widget: "image" }
+          - { label: "Visa beställningsformulär", name: "show_form", widget: "boolean", default: true }
+          - { label: "Formulär — rubrik", name: "form_title", widget: "string", default: "Beställ grönsakslåda" }
+          - { label: "Formulär — text", name: "form_text", widget: "string", default: "Jag återkommer med info om avhämtningstider och veckans innehåll." }
+
+      - name: "workshops"
+        label: "Workshops"
+        file: "content/workshops.json"
+        fields:
+          - { label: "Rubrik", name: "title", widget: "string", default: "Kommande workshops" }
+          - { label: "Beskrivning", name: "description", widget: "text" }
+          - { label: "Header-bild", name: "header_image", widget: "image", required: false }
+          - label: "Workshops"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Namn", name: "name", widget: "string" }
+              - { label: "Emoji", name: "emoji", widget: "string", required: false }
+              - { label: "Datum", name: "date", widget: "string" }
+              - { label: "Plats", name: "location", widget: "string", default: "Munkedal" }
+              - { label: "Längd", name: "duration", widget: "string", default: "Ca 2 timmar" }
+              - { label: "Pris", name: "price", widget: "string" }
+              - { label: "Pristext", name: "price_note", widget: "string", default: "per person" }
+              - { label: "Extra info", name: "extra", widget: "string", required: false }
+              - { label: "CTA-text", name: "cta", widget: "string", default: "Anmäl dig" }
+
+      - name: "kontakt"
+        label: "Kontakt"
+        file: "content/kontakt.json"
+        fields:
+          - { label: "Plats", name: "location", widget: "string", default: "Munkedal, Bohuslän" }
+          - { label: "Instagram", name: "instagram", widget: "string", default: "@tradgardsfloristen" }
+          - { label: "Instagram-URL", name: "instagram_url", widget: "string", default: "https://www.instagram.com/tradgardsfloristen" }
+          - { label: "Facebook-text", name: "facebook", widget: "string", default: "Trädgårdsfloristen" }
+          - { label: "Facebook-URL", name: "facebook_url", widget: "string", default: "https://www.facebook.com/tradgardsfloristen" }

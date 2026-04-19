@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trädgårdsfloristen — Elisa Jonsson | Munkedal</title>
+  <meta name="description" content="Blommor, grönsaker och workshops från en liten gård i Munkedal, Bohuslän. Lokalodlat med hjärta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    :root {
+      --green: #6B8F5E;
+      --green-light: #A8C5A0;
+      --green-dark: #4a6b3f;
+      --pink: #E8B4B8;
+      --pink-light: #F9EEED;
+      --taupe: #9C8B78;
+      --cream: #FDFAF7;
+      --white: #ffffff;
+      --text: #3a3530;
+      --text-muted: #7a7268;
+      --border: #e8e0d8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      position: relative;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--green);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+    }
+    .nav-cta:hover { background: var(--green-dark); color: var(--white) !important; }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      position: absolute;
+      right: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 0;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* HERO */
+    .hero {
+      background: var(--pink-light);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('images/hero-solrosor.jpg') center center / cover no-repeat;
+      opacity: 0.35;
+    }
+    .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 400;
+      color: var(--green-dark);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--green); }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+      padding: 0.875rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--green);
+      padding: 0.875rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 2px solid var(--green);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--green); color: var(--white); }
+
+    /* DIVIDER */
+    .divider { text-align: center; padding: 2rem 0 0; color: var(--pink); font-size: 1.5rem; letter-spacing: 0.5rem; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 400;
+      color: var(--green-dark);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* OM MIG */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .about-text p { margin-bottom: 1.25rem; color: var(--text-muted); }
+    .about-text p:last-of-type { margin-bottom: 2rem; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag {
+      background: var(--pink-light);
+      color: var(--taupe);
+      font-size: 0.85rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      border: 1px solid var(--pink);
+    }
+
+    /* SERVICE CARDS */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      cursor: pointer;
+    }
+    .service-card:hover { box-shadow: 0 4px 20px rgba(107,143,94,0.1); transform: translateY(-2px); }
+    .service-card img { width: 100%; height: 180px; object-fit: cover; }
+    .service-card-body { padding: 1.5rem 2rem 2rem; }
+    .service-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--green-dark);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* BLOMMOR */
+    .blommor-bg { background: var(--white); }
+    .sjalvplock-banner {
+      background: var(--cream);
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .sjalvplock-banner .sp-icon { font-size: 2rem; flex-shrink: 0; }
+    .sjalvplock-banner .sp-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.35rem;
+    }
+    .sjalvplock-banner p { color: var(--text); font-size: 0.95rem; margin: 0; }
+    .blommor-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .blommor-images img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* GRÖNSAKER */
+    .gronsaker-bg { background: var(--pink-light); }
+
+    /* WORKSHOPS */
+    .workshops-bg { background: var(--pink-light); }
+    .workshop-list { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 3rem; }
+    .workshop-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border: 1px solid var(--border);
+    }
+    .workshop-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--green-dark);
+      margin-bottom: 0.35rem;
+    }
+    .workshop-meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .workshop-meta span { display: flex; align-items: center; gap: 0.4rem; }
+    .workshop-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .workshop-price small { font-family: 'Lato', sans-serif; font-size: 0.8rem; color: var(--text-muted); display: block; }
+
+    /* FORMULÄR */
+    .form-section { background: var(--white); }
+    .form-wrapper {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      max-width: 600px;
+    }
+    .form-wrapper h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+    .form-wrapper p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.85rem; font-weight: 700; color: var(--text); letter-spacing: 0.03em; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { outline: none; border-color: var(--green); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .swish-notice {
+      background: var(--pink-light);
+      border: 1px solid var(--pink);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      color: var(--taupe);
+    }
+    .swish-notice strong { color: var(--text); }
+    .form-success {
+      display: none;
+      background: #f0f7ee;
+      border: 1px solid var(--green-light);
+      border-radius: 6px;
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--green-dark);
+    }
+    .form-success h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+    /* NYHETSBREV */
+    .newsletter-bg { background: var(--green-dark); }
+    .newsletter-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .newsletter-inner .section-label { color: var(--green-light); }
+    .newsletter-inner .section-title { color: var(--white); }
+    .newsletter-inner p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; }
+    .newsletter-form { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input {
+      flex: 1; min-width: 240px; padding: 0.875rem 1rem;
+      border: none; border-radius: 4px; font-family: 'Lato', sans-serif; font-size: 1rem;
+    }
+    .newsletter-form input:focus { outline: 2px solid var(--pink); }
+    .newsletter-form button {
+      background: var(--pink); color: var(--text); border: none;
+      padding: 0.875rem 1.75rem; border-radius: 4px;
+      font-family: 'Lato', sans-serif; font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .newsletter-form button:hover { background: var(--pink-light); }
+    .newsletter-legal { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 1rem; }
+
+    /* KONTAKT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+    .contact-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .contact-item h4 { font-weight: 700; margin-bottom: 0.25rem; }
+    .contact-item p, .contact-item a { color: var(--text-muted); text-decoration: none; }
+    .contact-item a:hover { color: var(--green); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { outline: none; border-color: var(--green); }
+    .contact-form textarea { min-height: 140px; resize: vertical; }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.65);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      list-style: none;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--pink-light);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .footer-social-link:hover { color: var(--white); }
+    .social-icon { width: 20px; height: 20px; fill: currentColor; }
+    .footer-copy { font-size: 0.8rem; opacity: 0.4; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-image { aspect-ratio: 3/2; max-height: 300px; }
+      .about-image img { object-position: center 20%; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .workshop-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .blommor-images { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-links" style="flex:1;justify-content:flex-start;">
+      <li><a href="#om">Om mig</a></li>
+      <li><a href="#blommor">Blommor</a></li>
+      <li><a href="#gronsaker">Grönsaker</a></li>
+    </ul>
+    <a href="#" class="nav-logo" style="position:absolute;left:50%;transform:translateX(-50%);"><img src="images/logo-tradgardsfloristen.png" alt="Trädgårdsfloristen" style="height:68px;width:auto;" /></a>
+    <ul class="nav-links" style="flex:1;justify-content:flex-end;">
+      <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#anmalan">Anmälan</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu">
+    <a href="#om" onclick="this.closest('.mobile-menu').classList.remove('open')">Om mig</a>
+    <a href="#blommor" onclick="this.closest('.mobile-menu').classList.remove('open')">Blommor</a>
+    <a href="#gronsaker" onclick="this.closest('.mobile-menu').classList.remove('open')">Grönsaker</a>
+    <a href="#workshops" onclick="this.closest('.mobile-menu').classList.remove('open')">Workshops</a>
+    <a href="#anmalan" onclick="this.closest('.mobile-menu').classList.remove('open')">Anmälan</a>
+    <a href="#kontakt" onclick="this.closest('.mobile-menu').classList.remove('open')">Kontakt</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-content">
+    <span class="hero-badge" id="heroBadge">🌿 Munkedal, Bohuslän</span>
+    <h1 id="heroTitle">Blommor, grönsaker<br>och <em>hjärta</em> — direkt<br>från trädgården</h1>
+    <p id="heroSubtitle">Välkommen till Trädgårdsfloristen. Jag är Elisa, florist och odlare i Munkedal. Här finns lokalodlade blommor, grönsaker och workshops för dig som vill lära dig något med händerna.</p>
+    <div class="hero-actions">
+      <a href="#workshops" class="btn-primary">🌸 Se workshops</a>
+      <a href="#om" class="btn-secondary">Mer om mig</a>
+    </div>
+  </div>
+  <div class="divider">✦ ✦ ✦</div>
+</section>
+
+<!-- OM MIG -->
+<section id="om">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image">
+        <img id="aboutPortrait" src="images/elisa-portrait.jpg" alt="Elisa Jonsson" />
+      </div>
+      <div class="about-text">
+        <div class="section-label">Om mig</div>
+        <h2 class="section-title" id="aboutTitle">Hej, jag är Elisa</h2>
+        <div id="aboutTexts">
+          <p>Jag har jobbat som florist i 15 år och har en trädgårdsutbildning i grunden. Min trädgård i Munkedal är hjärtat i det jag gör.</p>
+          <p>Att arbeta med blommor har varit min dröm sedan barnsben — och idag lever jag den drömmen. Här odlar jag blommor och grönsaker och bygger workshops runt det jag älskar.</p>
+          <p>Jag bor på en liten gård med min familj och driver Trädgårdsfloristen vid sidan om mitt arbete som florist i Uddevalla. Det är ett projekt som växt fram ur ren glädje.</p>
+          <p>Allt jag erbjuder — blommor, grönsaker och workshops — är lokalproducerat från min gård i Munkedal.</p>
+        </div>
+        <div class="about-tags" id="aboutTags">
+          <span class="tag">🌸 Florist i 15 år</span>
+          <span class="tag">🎓 Trädgårdsutbildning</span>
+          <span class="tag">📍 Munkedal</span>
+          <span class="tag">🌿 Lokalodlat</span>
+          <span class="tag">🥬 Grönsaker & blommor</span>
+          <span class="tag">✂️ Workshops</span>
+        </div>
+        <br/>
+        <div id="aboutSocial" style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-flex;align-items:center;gap:0.5rem;">
+            <svg style="width:18px;height:18px;fill:currentColor;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @tradgardsfloristen
+          </a>
+          <a href="https://www.facebook.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-flex;align-items:center;gap:0.5rem;">
+            <svg style="width:18px;height:18px;fill:currentColor;" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- KLICKBARA RUTOR -->
+    <div class="services-grid">
+      <a href="#blommor" class="service-card">
+        <img src="images/bukett.jpg" alt="Blommor" />
+        <div class="service-card-body">
+          <div class="service-icon">💐</div>
+          <h3>Blommor</h3>
+          <p>Självplock och workshops under rätt säsong. Lokalt odlade snittblommor från min trädgård.</p>
+        </div>
+      </a>
+      <a href="#gronsaker" class="service-card">
+        <img src="images/gronsakslada.jpg" alt="Grönsakslåda" />
+        <div class="service-card-body">
+          <div class="service-icon">🥬</div>
+          <h3>Grönsaker</h3>
+          <p>Veckolåda med lokalodlade grönsaker. Beställ för avhämtning under sommarsäsongen.</p>
+        </div>
+      </a>
+      <a href="#workshops" class="service-card">
+        <img src="images/workshop-lokal.jpg" alt="Workshop-lokal" />
+        <div class="service-card-body">
+          <div class="service-icon">✂️</div>
+          <h3>Workshops</h3>
+          <p>Lär dig binda kransar, buketter och arrangemang. Praktiska tillfällen för alla. Pris från 395 kr.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOMMOR -->
+<section id="blommor" class="blommor-bg">
+  <div class="section-inner">
+    <div class="section-label">Från trädgården</div>
+    <h2 class="section-title" id="blommorTitle">Blommor</h2>
+    <p class="section-subtitle" id="blommorDesc">Lokalt odlade snittblommor från min gård i Munkedal. Under säsong erbjuder jag självplock — kom och plocka din egen bukett direkt från odlingen.</p>
+
+    <div class="sjalvplock-banner" id="sjalvplockBanner" style="display:flex;">
+      <div class="sp-icon">🌷</div>
+      <div>
+        <div class="sp-label" id="sjalvplockTitle">Nästa självplock</div>
+        <p id="sjalvplockText"><strong>Datum meddelas snart</strong> — Följ mig på Instagram för att inte missa nästa tillfälle!</p>
+      </div>
+    </div>
+
+    <div class="blommor-images">
+      <img id="blommorImg1" src="images/bukett.jpg" alt="Bukett med lokala blommor" />
+      <img id="blommorImg2" src="images/blommor-rabatt.jpg" alt="Blomrabatt i soluppgång" />
+    </div>
+
+    <div style="margin-top:2rem;">
+      <p style="color:var(--text-muted);margin-bottom:1rem;">Blommorna erbjuds vid speciella workshops samt vid självplock under rätt säsong. Vill du veta mer eller boka en blomsterworkshop?</p>
+      <a href="#workshops" class="btn-primary">🌸 Se workshops</a>
+    </div>
+  </div>
+</section>
+
+<!-- GRÖNSAKER -->
+<section id="gronsaker" class="gronsaker-bg">
+  <div class="section-inner">
+    <div class="section-label">Lokalodlat</div>
+    <h2 class="section-title" id="gronsakerTitle">Grönsaker</h2>
+    <p class="section-subtitle" id="gronsakerDesc">Beställ en veckolåda med lokalodlade grönsaker. Avhämtning under sommarsäsongen efter överenskommelse.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;align-items:start;">
+      <img id="gronsakerImg1" src="images/gronsakslada.jpg" alt="Grönsakslåda" style="width:100%;border-radius:8px;object-fit:cover;height:260px;" />
+      <img id="gronsakerImg2" src="images/tradgard-gronsaker.jpg" alt="Köksträdgård" style="width:100%;border-radius:8px;object-fit:cover;height:260px;" />
+    </div>
+
+    <div class="form-wrapper" id="gronsakslada-form">
+      <h3 id="gsFormTitle">Beställ grönsakslåda</h3>
+      <p id="gsFormText">Jag återkommer med info om avhämtningstider och veckans innehåll.</p>
+      <form name="gronsakslada" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/tack.html">
+        <input type="hidden" name="form-name" value="gronsakslada" />
+        <p style="display:none;"><input name="bot-field" /></p>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="gs-name">Namn *</label>
+            <input type="text" id="gs-name" name="name" placeholder="Ditt namn" required />
+          </div>
+          <div class="form-group">
+            <label for="gs-phone">Telefon *</label>
+            <input type="tel" id="gs-phone" name="phone" placeholder="070-XXX XX XX" required />
+          </div>
+          <div class="form-group full">
+            <label for="gs-email">E-post *</label>
+            <input type="email" id="gs-email" name="email" placeholder="din@epost.se" required />
+          </div>
+          <div class="form-group">
+            <label for="gs-antal">Antal lådor *</label>
+            <select id="gs-antal" name="antal" required>
+              <option value="1">1 låda</option>
+              <option value="2">2 lådor</option>
+              <option value="3">3 lådor</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="gs-meddelande">Meddelande (valfritt)</label>
+            <textarea id="gs-meddelande" name="meddelande" placeholder="Allergier, önskemål, frågor..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;font-size:1rem;padding:1rem;margin-top:1rem;">Skicka beställning →</button>
+      </form>
+    </div>
+
+    <div id="gronsakslada-locked" style="display:none;" class="form-wrapper">
+      <div style="text-align:center;padding:1rem 0;">
+        <div style="font-size:3rem;margin-bottom:1rem;">🥬</div>
+        <h3 style="margin-bottom:0.5rem;">Beställning pausad</h3>
+        <p style="color:var(--text-muted);">Just nu finns inga grönsakslådor att beställa. Följ mig på Instagram för att få reda på när det öppnar igen!</p>
+        <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;margin-top:1.25rem;">📸 @tradgardsfloristen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section id="workshops" class="workshops-bg">
+  <div class="section-inner">
+    <div class="section-label">Lär dig något med händerna</div>
+    <h2 class="section-title" id="workshopsTitle">Kommande workshops</h2>
+    <p class="section-subtitle" id="workshopsDesc">Kreativa tillfällen för dig som vill skapa — ensam, med vänner eller med jobbet. Pris från 395 kr. Max antal platser per tillfälle.</p>
+
+    <div id="workshopHeaderImg" style="margin-bottom:2.5rem;border-radius:8px;overflow:hidden;">
+      <img src="images/midsommarkrans.jpg" alt="Workshop" style="width:100%;height:280px;object-fit:cover;" />
+    </div>
+
+    <div class="workshop-list" id="workshopList">
+      <!-- Renderas av JS från content/workshops.json -->
+      <div class="workshop-card">
+        <div class="workshop-info">
+          <h3>🌸 Midsommarkrans</h3>
+          <div class="workshop-meta">
+            <span>📅 18 juni kl. 19:30</span>
+            <span>📍 Munkedal</span>
+            <span>⏱ Ca 2 timmar</span>
+          </div>
+          <div style="margin-top:0.5rem;font-size:0.88rem;color:var(--green-dark);font-style:italic;">🍽 Lättare tilltugg ingår</div>
+        </div>
+        <div>
+          <div class="workshop-price">450 kr<small>per person</small></div>
+          <a href="#anmalan" class="btn-primary" style="display:block;text-align:center;margin-top:0.75rem;font-size:0.85rem;padding:0.6rem 1.25rem;">Anmäl dig</a>
+        </div>
+      </div>
+      <div class="workshop-card">
+        <div class="workshop-info">
+          <h3>🌸 Midsommarkrans</h3>
+          <div class="workshop-meta">
+            <span>📅 19 juni kl. 09:30</span>
+            <span>📍 Munkedal</span>
+            <span>⏱ Ca 2 timmar</span>
+          </div>
+          <div style="margin-top:0.5rem;font-size:0.88rem;color:var(--green-dark);font-style:italic;">🍽 Lättare tilltugg ingår</div>
+        </div>
+        <div>
+          <div class="workshop-price">450 kr<small>per person</small></div>
+          <a href="#anmalan" class="btn-primary" style="display:block;text-align:center;margin-top:0.75rem;font-size:0.85rem;padding:0.6rem 1.25rem;">Anmäl dig</a>
+        </div>
+      </div>
+      <div class="workshop-card">
+        <div class="workshop-info">
+          <h3>🎄 Julkrans (höst/vinter)</h3>
+          <div class="workshop-meta">
+            <span>📅 Datum meddelas snart</span>
+            <span>📍 Munkedal</span>
+            <span>⏱ Ca 2 timmar</span>
+          </div>
+        </div>
+        <div>
+          <div class="workshop-price">från 395 kr<small>per person</small></div>
+          <a href="#anmalan" class="btn-primary" style="display:block;text-align:center;margin-top:0.75rem;font-size:0.85rem;padding:0.6rem 1.25rem;">Anmäl intresse</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANMÄLAN -->
+<section id="anmalan" class="form-section">
+  <div class="section-inner">
+    <div class="section-label">Workshop-anmälan</div>
+    <h2 class="section-title">Anmäl dig</h2>
+    <p class="section-subtitle">Fyll i formuläret så återkommer jag med bekräftelse och detaljinfo. <strong>Betalning sker på plats vid workshoptillfället.</strong></p>
+
+    <div class="form-wrapper">
+      <h3>Anmälningsformulär</h3>
+      <p>Jag återkommer med bekräftelse inom 1-2 dagar.</p>
+
+      <form id="workshopForm" name="workshop" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/tack.html">
+        <input type="hidden" name="form-name" value="workshop" />
+        <p style="display:none;"><input name="bot-field" /></p>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Namn *</label>
+            <input type="text" id="name" name="name" placeholder="Ditt namn" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon *</label>
+            <input type="tel" id="phone" name="phone" placeholder="070-XXX XX XX" required />
+          </div>
+          <div class="form-group full">
+            <label for="email">E-post *</label>
+            <input type="email" id="email" name="email" placeholder="din@epost.se" required />
+          </div>
+          <div class="form-group full">
+            <label for="workshop">Workshop *</label>
+            <select id="workshop" name="workshop" required>
+              <option value="">Välj workshop...</option>
+              <option value="midsommarkrans-18jun">🌸 Midsommarkrans — 18 juni kl. 19:30</option>
+              <option value="midsommarkrans-19jun">🌸 Midsommarkrans — 19 juni kl. 09:30</option>
+              <option value="julkrans">🎄 Julkrans</option>
+              <option value="annat">Jag är öppen — meddela mig om nästa!</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="spots">Antal platser *</label>
+            <select id="spots" name="spots" required>
+              <option value="1">1 plats</option>
+              <option value="2">2 platser</option>
+              <option value="3">3 platser</option>
+              <option value="4">4 platser</option>
+              <option value="5">5+ platser (grupp)</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="message">Meddelande (valfritt)</label>
+            <textarea id="message" name="message" placeholder="Allergier, önskemål, frågor..."></textarea>
+          </div>
+        </div>
+        <div class="swish-notice">
+          ✅ <strong>Betalning sker på plats</strong> — du betalar i samband med workshoptillfället. Swish finns tillgängligt.
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;font-size:1rem;padding:1rem;">Skicka anmälan →</button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <h4>🌸 Tack för din anmälan!</h4>
+        <p>Jag återkommer med bekräftelse och betalningsinformation inom 1-2 dagar. Kika gärna in på Instagram i mellantiden!</p>
+        <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;margin-top:1rem;">📸 @tradgardsfloristen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NYHETSBREV -->
+<section class="newsletter-bg">
+  <div class="section-inner newsletter-inner">
+    <div class="section-label">Håll dig uppdaterad</div>
+    <h2 class="section-title">Säsongens nyheter — direkt i inkorgen</h2>
+    <p>Få reda på nya workshops, vad som blommar just nu och nyheter från trädgården. Jag spammar inte.</p>
+    <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter" />
+      <input type="hidden" name="bot-field" style="display:none" />
+      <input type="email" name="email" placeholder="din@epost.se" required />
+      <button type="submit">Prenumerera</button>
+    </form>
+    <p class="newsletter-legal">Inga konstigheter. Avsluta när du vill.</p>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Kom i kontakt</div>
+        <h2 class="section-title">Hör av dig</h2>
+        <p class="section-subtitle" style="margin-bottom:2rem;">Frågor om beställningar, workshops eller om du bara vill säga hej.</p>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><h4>Plats</h4><p id="kontaktLocation">Munkedal, Bohuslän</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg style="width:24px;height:24px;fill:var(--text-muted);" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div><h4>Instagram</h4><a id="kontaktIg" href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener">@tradgardsfloristen</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg style="width:24px;height:24px;fill:var(--text-muted);" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </div>
+          <div><h4>Facebook</h4><a id="kontaktFb" href="https://www.facebook.com/tradgardsfloristen" target="_blank" rel="noopener">Trädgårdsfloristen</a></div>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="bot-field" style="display:none" />
+          <input type="text" name="name" placeholder="Ditt namn" required />
+          <input type="email" name="email" placeholder="din@epost.se" required />
+          <textarea name="message" placeholder="Ditt meddelande..." required></textarea>
+          <button type="submit" class="btn-primary" style="align-self:flex-start;padding:0.875rem 2rem;">Skicka →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Trädgårdsfloristen</div>
+  <ul class="footer-links">
+    <li><a href="#om">Om mig</a></li>
+    <li><a href="#blommor">Blommor</a></li>
+    <li><a href="#gronsaker">Grönsaker</a></li>
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#anmalan">Anmälan</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="footer-social-link">
+      <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @tradgardsfloristen
+    </a>
+    <a href="https://www.facebook.com/tradgardsfloristen" target="_blank" rel="noopener" class="footer-social-link">
+      <svg class="social-icon" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+  </div>
+  <p class="footer-copy">© 2026 Trädgårdsfloristen · Elisa Jonsson · Munkedal</p>
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const mm = document.querySelector('.mobile-menu');
+        if (mm) mm.classList.remove('open');
+      }
+    });
+  });
+
+  // Load CMS content from JSON files and apply to page
+  async function loadContent() {
+    try {
+      // Hero
+      const hero = await fetch('/content/hero.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (hero) {
+        if (hero.badge) document.getElementById('heroBadge').textContent = hero.badge;
+        if (hero.subtitle) document.getElementById('heroSubtitle').textContent = hero.subtitle;
+        if (hero.hero_image) {
+          document.querySelector('.hero').style.setProperty('--hero-bg', `url('${hero.hero_image}')`);
+        }
+      }
+
+      // About
+      const about = await fetch('/content/about.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (about) {
+        if (about.portrait) document.getElementById('aboutPortrait').src = about.portrait;
+        if (about.title) document.getElementById('aboutTitle').textContent = about.title;
+        const texts = [about.text1, about.text2, about.text3, about.text4].filter(Boolean);
+        if (texts.length) {
+          document.getElementById('aboutTexts').innerHTML = texts.map(t => `<p>${t}</p>`).join('');
+        }
+        if (about.tags && about.tags.length) {
+          document.getElementById('aboutTags').innerHTML = about.tags.map(t => `<span class="tag">${t}</span>`).join('');
+        }
+      }
+
+      // Blommor
+      const blommor = await fetch('/content/blommor.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (blommor) {
+        if (blommor.title) document.getElementById('blommorTitle').textContent = blommor.title;
+        if (blommor.description) document.getElementById('blommorDesc').textContent = blommor.description;
+        if (blommor.image1) document.getElementById('blommorImg1').src = blommor.image1;
+        if (blommor.image2) document.getElementById('blommorImg2').src = blommor.image2;
+        const banner = document.getElementById('sjalvplockBanner');
+        banner.style.display = blommor.show_sjalvplock ? 'flex' : 'none';
+        if (blommor.sjalvplock_title) document.getElementById('sjalvplockTitle').textContent = blommor.sjalvplock_title;
+        if (blommor.sjalvplock_text) document.getElementById('sjalvplockText').innerHTML = blommor.sjalvplock_text;
+      }
+
+      // Grönsaker
+      const gs = await fetch('/content/gronsaker.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (gs) {
+        if (gs.title) document.getElementById('gronsakerTitle').textContent = gs.title;
+        if (gs.description) document.getElementById('gronsakerDesc').textContent = gs.description;
+        if (gs.image1) document.getElementById('gronsakerImg1').src = gs.image1;
+        if (gs.image2) document.getElementById('gronsakerImg2').src = gs.image2;
+        if (gs.form_title) document.getElementById('gsFormTitle').textContent = gs.form_title;
+        if (gs.form_text) document.getElementById('gsFormText').textContent = gs.form_text;
+        document.getElementById('gronsakslada-form').style.display = gs.show_form ? 'block' : 'none';
+        document.getElementById('gronsakslada-locked').style.display = gs.show_form ? 'none' : 'block';
+      }
+
+      // Workshops
+      const ws = await fetch('/content/workshops.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (ws) {
+        if (ws.title) document.getElementById('workshopsTitle').textContent = ws.title;
+        if (ws.description) document.getElementById('workshopsDesc').textContent = ws.description;
+        if (ws.header_image) {
+          document.querySelector('#workshopHeaderImg img').src = ws.header_image;
+        }
+        if (ws.items && ws.items.length) {
+          const list = document.getElementById('workshopList');
+          list.innerHTML = ws.items.map(w => `
+            <div class="workshop-card">
+              <div class="workshop-info">
+                <h3>${w.emoji || ''} ${w.name}</h3>
+                <div class="workshop-meta">
+                  <span>📅 ${w.date}</span>
+                  <span>📍 ${w.location}</span>
+                  <span>⏱ ${w.duration}</span>
+                </div>
+                ${w.extra ? `<div style="margin-top:0.5rem;font-size:0.88rem;color:var(--green-dark);font-style:italic;">${w.extra}</div>` : ''}
+              </div>
+              <div>
+                <div class="workshop-price">${w.price}<small>${w.price_note}</small></div>
+                <a href="#anmalan" class="btn-primary" style="display:block;text-align:center;margin-top:0.75rem;font-size:0.85rem;padding:0.6rem 1.25rem;">${w.cta}</a>
+              </div>
+            </div>
+          `).join('');
+
+          // Also update the workshop select dropdown
+          const select = document.getElementById('workshop');
+          if (select) {
+            const existing = select.querySelector('option[value="annat"]');
+            // Clear all but first (placeholder) and last (annat)
+            while (select.options.length > 1) select.remove(1);
+            ws.items.forEach(w => {
+              const opt = document.createElement('option');
+              opt.value = (w.name + '-' + w.date).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+              opt.textContent = `${w.emoji || ''} ${w.name} — ${w.date}`;
+              select.appendChild(opt);
+            });
+            const annatOpt = document.createElement('option');
+            annatOpt.value = 'annat';
+            annatOpt.textContent = 'Jag är öppen — meddela mig om nästa!';
+            select.appendChild(annatOpt);
+          }
+        }
+      }
+
+      // Kontakt
+      const kontakt = await fetch('/content/kontakt.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (kontakt) {
+        if (kontakt.location) document.getElementById('kontaktLocation').textContent = kontakt.location;
+        if (kontakt.instagram_url) {
+          const ig = document.getElementById('kontaktIg');
+          ig.href = kontakt.instagram_url;
+          ig.textContent = kontakt.instagram;
+        }
+        if (kontakt.facebook_url) {
+          const fb = document.getElementById('kontaktFb');
+          fb.href = kontakt.facebook_url;
+          fb.textContent = kontakt.facebook;
+        }
+      }
+    } catch (e) {
+      console.log('CMS content not loaded, using defaults:', e);
+    }
+  }
+
+  loadContent();
+
+  // Netlify Identity redirect after login
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', user => {
+      if (!user) {
+        window.netlifyIdentity.on('login', () => {
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

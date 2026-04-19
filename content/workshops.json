@@ -1,0 +1,40 @@
+{
+  "title": "Kommande workshops",
+  "description": "Kreativa tillfällen för dig som vill skapa — ensam, med vänner eller med jobbet. Pris från 395 kr. Max antal platser per tillfälle.",
+  "header_image": "/images/midsommarkrans.jpg",
+  "items": [
+    {
+      "name": "Midsommarkrans",
+      "emoji": "🌸",
+      "date": "18 juni kl. 19:30",
+      "location": "Munkedal",
+      "duration": "Ca 2 timmar",
+      "price": "450 kr",
+      "price_note": "per person",
+      "extra": "🍽 Lättare tilltugg ingår",
+      "cta": "Anmäl dig"
+    },
+    {
+      "name": "Midsommarkrans",
+      "emoji": "🌸",
+      "date": "19 juni kl. 09:30",
+      "location": "Munkedal",
+      "duration": "Ca 2 timmar",
+      "price": "450 kr",
+      "price_note": "per person",
+      "extra": "🍽 Lättare tilltugg ingår",
+      "cta": "Anmäl dig"
+    },
+    {
+      "name": "Julkrans (höst/vinter)",
+      "emoji": "🎄",
+      "date": "Datum meddelas snart",
+      "location": "Munkedal",
+      "duration": "Ca 2 timmar",
+      "price": "från 395 kr",
+      "price_note": "per person",
+      "extra": "",
+      "cta": "Anmäl intresse"
+    }
+  ]
+}
