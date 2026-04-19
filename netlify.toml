@@ -1,11 +1,14 @@
+[build]
+  publish = "."
+  command = "echo 'No build needed'"
+
 [[redirects]]
-  from = "/tack"
-  to = "/tack.html"
+  from = "/*"
+  to = "/index.html"
   status = 200
+  conditions = {Role = ["admin"]}
 
 [[headers]]
-  for = "/*"
+  for = "/admin/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "no-cache"
