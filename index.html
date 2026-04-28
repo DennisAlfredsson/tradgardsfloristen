@@ -516,6 +516,23 @@
     .social-icon { width: 20px; height: 20px; fill: currentColor; }
     .footer-copy { font-size: 0.8rem; opacity: 0.4; }
 
+    /* GRÖNSAKSLÅDA FULL-WIDTH + SJALVPLOCK-STIL */
+    #gronsakslada-form {
+      max-width: none;
+      border: 2px solid var(--green);
+    }
+    #gronsakslada-form .form-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    #gronsakslada-form .form-group.full {
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 768px) {
+      #gronsakslada-form .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -563,14 +580,14 @@
 </nav>
 
 <!-- NYHETSBREV TOP -->
-<section class="newsletter-bg" id="nyhetsbrev-top" style="padding:2rem 2rem;">
+<section class="newsletter-bg" id="nyhetsbrev-top" style="padding:0.6rem 2rem;">
   <div class="section-inner newsletter-inner">
-    <p style="color:rgba(255,255,255,0.85);font-size:0.95rem;margin-bottom:0.75rem;">📬 <strong style="color:#fff;">Håll dig uppdaterad</strong> — Få nyheter om workshops och säsongens blommor direkt i inkorgen.</p>
-    <form class="newsletter-form" name="newsletter-top" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="justify-content:center;">
+    <p style="color:rgba(255,255,255,0.85);font-size:0.8rem;margin-bottom:0.35rem;">📬 <strong style="color:#fff;">Håll dig uppdaterad</strong> — workshops och nyheter direkt i inkorgen.</p>
+    <form class="newsletter-form" name="newsletter-top" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="justify-content:center;gap:0.5rem;">
       <input type="hidden" name="form-name" value="newsletter-top" />
       <input type="hidden" name="bot-field" style="display:none" />
-      <input type="email" name="email" placeholder="din@epost.se" required style="max-width:280px;" />
-      <button type="submit">Prenumerera</button>
+      <input type="email" name="email" placeholder="din@epost.se" required style="max-width:260px;padding:0.5rem 0.875rem;font-size:0.9rem;" />
+      <button type="submit" style="padding:0.5rem 1.25rem;font-size:0.85rem;">Prenumerera</button>
     </form>
   </div>
 </section>
