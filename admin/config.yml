@@ -91,3 +91,47 @@ collections:
           - { label: "Instagram-URL", name: "instagram_url", widget: "string", default: "https://www.instagram.com/tradgardsfloristen" }
           - { label: "Facebook-text", name: "facebook", widget: "string", default: "Trädgårdsfloristen" }
           - { label: "Facebook-URL", name: "facebook_url", widget: "string", default: "https://www.facebook.com/tradgardsfloristen" }
+
+      - name: "instagram"
+        label: "Instagram — Planera inlägg"
+        file: "content/instagram.json"
+        fields:
+          - label: "Instagram-poster"
+            name: "posts"
+            widget: "list"
+            label_singular: "Inlägg"
+            fields:
+              - { label: "Bildtext / Caption", name: "caption", widget: "text" }
+              - label: "Hashtags (max 5 per inlägg)"
+                name: "hashtags"
+                widget: "list"
+                max: 5
+                label_singular: "Hashtag"
+                field: { label: "Hashtag", name: "tag", widget: "string", hint: "Skriv utan #, t.ex. trädgård" }
+              - { label: "Datum", name: "date", widget: "date", required: false, hint: "När är inlägget planerat?" }
+              - { label: "Status", name: "status", widget: "select", options: ["Utkast", "Redo att publicera", "Publicerat"], default: "Utkast" }
+
+  - name: "nyhetsbrev"
+    label: "📬 Nyhetsbrev"
+    folder: "content/nyhetsbrev"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: "subject"
+    summary: "{{subject}} — {{date}}"
+    fields:
+      - { label: "Ämnesrad", name: "subject", widget: "string", hint: "Denna text syns i mottagarens inkorg" }
+      - { label: "Datum", name: "date", widget: "date" }
+      - { label: "Hälsning", name: "greeting", widget: "string", default: "Hej!", hint: "T.ex. Hej! eller Hej kära prenumerant!" }
+      - { label: "Inledningstext", name: "intro", widget: "text", hint: "Kort intro — vad handlar det här utskicket om?" }
+      - label: "Sektioner"
+        name: "sections"
+        widget: "list"
+        label_singular: "Sektion"
+        hint: "Lägg till så många sektioner du vill — t.ex. Workshop-info, Blomnyhet, Recept"
+        fields:
+          - { label: "Rubrik", name: "title", widget: "string" }
+          - { label: "Text", name: "body", widget: "text" }
+          - { label: "Bild", name: "image", widget: "image", required: false }
+          - { label: "Knapp-text", name: "cta_text", widget: "string", required: false, hint: "T.ex. Läs mer eller Anmäl dig" }
+          - { label: "Knapp-länk", name: "cta_url", widget: "string", required: false, hint: "URL dit knappen ska leda" }
+      - { label: "Avslutning", name: "outro", widget: "string", default: "Varmt tack för din prenumeration! // Elisa 🌿" }
