@@ -584,14 +584,14 @@
 </nav>
 
 <!-- NYHETSBREV TOP -->
-<section class="newsletter-bg" id="nyhetsbrev-top" style="padding:0.35rem 2rem;">
+<section class="newsletter-bg" id="nyhetsbrev-top" style="padding:1.25rem 2rem;">
   <div class="section-inner" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0.75rem 1.25rem;">
-    <p style="color:rgba(255,255,255,0.85);font-size:0.78rem;margin:0;">📬 <strong style="color:#fff;">Håll dig uppdaterad</strong> — workshops och nyheter i inkorgen.</p>
-    <form class="newsletter-form" name="newsletter-top" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="justify-content:center;gap:0.4rem;margin:0;">
+    <p style="color:rgba(255,255,255,0.9);font-size:0.9rem;margin:0;font-weight:600;">🌸 Håll dig uppdaterad — workshops och nyheter direkt i inkorgen</p>
+    <form class="newsletter-form" name="newsletter-top" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="justify-content:center;gap:0.5rem;margin:0;">
       <input type="hidden" name="form-name" value="newsletter-top" />
       <input type="hidden" name="bot-field" style="display:none" />
-      <input type="email" name="email" placeholder="din@epost.se" required style="max-width:200px;padding:0.35rem 0.7rem;font-size:0.82rem;" />
-      <button type="submit" style="padding:0.35rem 0.9rem;font-size:0.78rem;">Prenumerera</button>
+      <input type="email" name="email" placeholder="din@epost.se" required style="max-width:220px;padding:0.55rem 0.9rem;font-size:0.9rem;" />
+      <button type="submit" style="padding:0.55rem 1.1rem;font-size:0.88rem;">Prenumerera</button>
     </form>
   </div>
 </section>
@@ -671,7 +671,7 @@
         <div class="service-card-body">
           <div class="service-icon">✂️</div>
           <h3>Workshops</h3>
-          <p>Lär dig binda kransar, buketter och arrangemang. Praktiska tillfällen för alla. Pris från 395 kr.</p>
+          <p>Lär dig binda kransar, buketter och arrangemang. Praktiska tillfällen för alla.</p>
         </div>
       </a>
     </div>
@@ -769,10 +769,10 @@
   <div class="section-inner">
     <div class="section-label">Lär dig något med händerna</div>
     <h2 class="section-title" id="workshopsTitle">Kommande workshops</h2>
-    <p class="section-subtitle" id="workshopsDesc">Kreativa tillfällen för dig som vill skapa — ensam, med vänner eller med jobbet. Pris från 395 kr. Max antal platser per tillfälle.</p>
+    <p class="section-subtitle" id="workshopsDesc">Kreativa tillfällen för dig som vill skapa — ensam, med vänner eller med jobbet. Max antal platser per tillfälle.</p>
 
     <div id="workshopHeaderImg" style="margin-bottom:2.5rem;border-radius:8px;overflow:hidden;">
-      <img src="images/midsommarkrans.jpg" alt="Workshop" style="width:100%;height:280px;object-fit:cover;" />
+      <img src="images/midsommarkrans.jpg" alt="Workshop" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:8px;" />
     </div>
 
     <div class="workshop-list" id="workshopList">
@@ -805,20 +805,6 @@
         <div>
           <div class="workshop-price">450 kr<small>per person</small></div>
           <a href="#anmalan" class="btn-primary" style="display:block;text-align:center;margin-top:0.75rem;font-size:0.85rem;padding:0.6rem 1.25rem;">Anmäl dig</a>
-        </div>
-      </div>
-      <div class="workshop-card">
-        <div class="workshop-info">
-          <h3>🎄 Julkrans (höst/vinter)</h3>
-          <div class="workshop-meta">
-            <span>📅 Datum meddelas snart</span>
-            <span>📍 Munkedal</span>
-            <span>⏱ Ca 2 timmar</span>
-          </div>
-        </div>
-        <div>
-          <div class="workshop-price">från 395 kr<small>per person</small></div>
-          <a href="#anmalan" class="btn-primary" style="display:block;text-align:center;margin-top:0.75rem;font-size:0.85rem;padding:0.6rem 1.25rem;">Anmäl intresse</a>
         </div>
       </div>
     </div>
@@ -858,7 +844,6 @@
               <option value="">Välj workshop...</option>
               <option value="midsommarkrans-18jun">🌸 Midsommarkrans — 18 juni kl. 19:30</option>
               <option value="midsommarkrans-19jun">🌸 Midsommarkrans — 19 juni kl. 09:30</option>
-              <option value="julkrans">🎄 Julkrans</option>
               <option value="annat">Jag är öppen — meddela mig om nästa!</option>
             </select>
           </div>
@@ -892,21 +877,7 @@
   </div>
 </section>
 
-<!-- NYHETSBREV -->
-<section class="newsletter-bg">
-  <div class="section-inner newsletter-inner">
-    <div class="section-label">Håll dig uppdaterad</div>
-    <h2 class="section-title">Säsongens nyheter — direkt i inkorgen</h2>
-    <p>Få reda på nya workshops, vad som blommar just nu och nyheter från trädgården. Jag spammar inte.</p>
-    <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="newsletter" />
-      <input type="hidden" name="bot-field" style="display:none" />
-      <input type="email" name="email" placeholder="din@epost.se" required />
-      <button type="submit">Prenumerera</button>
-    </form>
-    <p class="newsletter-legal">Inga konstigheter. Avsluta när du vill.</p>
-  </div>
-</section>
+
 
 <!-- KONTAKT -->
 <section id="kontakt">
