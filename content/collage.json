@@ -1,0 +1,12 @@
+{
+  "images": [
+    {"src": "/images/workshop-collage-1.jpg", "alt": "Vårlig krans med påskägg och narcisser"},
+    {"src": "/images/workshop-collage-2.jpg", "alt": "Blomsterkrans med hortensia och röda bär"},
+    {"src": "/images/workshop-collage-3.jpg", "alt": "Adventljuslykta med granris"},
+    {"src": "/images/workshop-collage-4.jpg", "alt": "Vårlig twig-krans med blå pärlhyacint"},
+    {"src": "/images/workshop-collage-5.jpg", "alt": "Julkrans med kottar och torkade apelsinskivor"},
+    {"src": "/images/workshop-collage-6.jpg", "alt": "Julkrans med kottar och brunt band"},
+    {"src": "/images/workshop-collage-7.jpg", "alt": "Blomsterkrans med margeritor och rosa blommor"},
+    {"src": "/images/workshop-collage-8.jpg", "alt": "Rosor och blommor på bord i trädgården"}
+  ]
+}

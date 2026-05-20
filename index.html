@@ -537,6 +537,32 @@
       }
     }
 
+    /* WORKSHOP COLLAGE */
+    .ws-collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 5px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ws-collage img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .ws-collage img:hover { transform: scale(1.03); }
+    .ws-collage img:nth-child(1) { grid-column: span 2; height: 195px; }
+    .ws-collage img:nth-child(2) { height: 195px; }
+    .ws-collage img:nth-child(n+3) { height: 155px; }
+    .anmalan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .anmalan-grid .form-wrapper { max-width: none; }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -550,6 +576,9 @@
       section { padding: 3.5rem 1.25rem; }
       .blommor-images { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
+      .anmalan-grid { grid-template-columns: 1fr; }
+      .ws-collage img:nth-child(1) { grid-column: span 2; height: 155px; }
+      .ws-collage img:nth-child(n+3) { height: 120px; }
     }
   </style>
 </head>
@@ -822,6 +851,13 @@
     <h2 class="section-title">Anmäl dig</h2>
     <p class="section-subtitle">Fyll i formuläret så återkommer jag med bekräftelse och detaljinfo. <strong>Betalning sker på plats vid workshoptillfället.</strong></p>
 
+    <div class="anmalan-grid">
+
+    <!-- KOLLAGE -->
+    <div class="ws-collage" id="workshopCollage">
+      <!-- Renderas av JS från content/collage.json -->
+    </div>
+
     <div class="form-wrapper">
       <h3>Anmälningsformulär</h3>
       <p>Jag återkommer med bekräftelse inom 1-2 dagar.</p>
@@ -878,6 +914,8 @@
         <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;margin-top:1rem;">@tradgardsfloristen</a>
       </div>
     </div>
+
+    </div><!-- /anmalan-grid -->
   </div>
 </section>
 
@@ -1058,6 +1096,17 @@
             annatOpt.textContent = 'Jag är öppen — meddela mig om nästa!';
             select.appendChild(annatOpt);
           }
+        }
+      }
+
+      // Workshop-kollage
+      const collage = await fetch('/content/collage.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (collage && collage.images && collage.images.length > 0) {
+        const container = document.getElementById('workshopCollage');
+        if (container) {
+          container.innerHTML = collage.images.map(img =>
+            `<img src="${img.src}" alt="${img.alt}" loading="lazy" />`
+          ).join('');
         }
       }
 

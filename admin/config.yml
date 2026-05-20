@@ -111,6 +111,23 @@ collections:
               - { label: "Datum", name: "date", widget: "date", required: false, hint: "När är inlägget planerat?" }
               - { label: "Status", name: "status", widget: "select", options: ["Utkast", "Redo att publicera", "Publicerat"], default: "Utkast" }
 
+  - name: "collage"
+    label: "🖼 Workshop-kollage"
+    files:
+      - name: "collage"
+        label: "Kollage — bilder intill anmälningsformuläret"
+        file: "content/collage.json"
+        fields:
+          - label: "Bilder (max 8 — visas i mosaic-layout)"
+            name: "images"
+            widget: "list"
+            max: 8
+            label_singular: "Bild"
+            hint: "Byt ut bilder här — första bilden visas dubbelt bred. Ladda upp nya bilder i mappen images/."
+            fields:
+              - { label: "Bild", name: "src", widget: "image", hint: "Välj eller ladda upp en bild" }
+              - { label: "Bildtext (för tillgänglighet)", name: "alt", widget: "string", hint: "Beskriv bilden kort" }
+
   - name: "nyhetsbrev"
     label: "📬 Nyhetsbrev"
     folder: "content/nyhetsbrev"
