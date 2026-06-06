@@ -3,7 +3,7 @@
   "description": "Lokalt odlade snittblommor från min gård i Munkedal. Under säsong erbjuder jag självplock — kom och plocka din egen bukett direkt från odlingen.",
   "image1": "/images/hero-solrosor.jpg",
   "image2": "/images/blommor-rabatt.jpg",
-  "show_sjalvplock": false,
+  "show_sjalvplock": true,
   "sjalvplock_title": "Nästa självplock",
-  "sjalvplock_text": "Självplock dahlior måndag 8 juni 16-18. Välkomna"
+  "sjalvplock_text": "Inga självplock inplanerade - håll koll genom att prenumerera på nyhetsbrevet eller kika in på instagram!"
 }
