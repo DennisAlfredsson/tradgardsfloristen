@@ -3,7 +3,7 @@
   "description": "Beställ en veckolåda med lokalodlade grönsaker. Grönsakerna varierar efter tillgång och säsong. Veckolådan innehåller alltid en variation av grönsaker att använda till middagen!\nAvhämtning under sommarsäsongen efter överenskommelse.",
   "image1": "/images/gronsakslada.jpg",
   "image2": "/images/tradgard-gronsaker.jpg",
-  "show_form": false,
+  "show_form": true,
   "form_title": "Beställ grönsakslåda",
   "form_text": "Jag återkommer med info om avhämtningstider."
 }
