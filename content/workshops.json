@@ -25,5 +25,8 @@
       "duration": "Ca 2 timmar",
       "location": "Munkedal"
     }
-  ]
+  ],
+  "show_workshops": true,
+  "locked_title": "Just nu finns inga aktuella workshops",
+  "locked_text": "Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps!"
 }

@@ -5,5 +5,7 @@
   "image2": "/images/blommor-rabatt.jpg",
   "show_sjalvplock": true,
   "sjalvplock_title": "Nästa självplock",
-  "sjalvplock_text": "Inga självplock inplanerade - håll koll genom att prenumerera på nyhetsbrevet eller kika in på instagram!"
+  "sjalvplock_text": "Inga självplock inplanerade - håll koll genom att prenumerera på nyhetsbrevet eller kika in på instagram!",
+  "sjalvplock_locked_title": "Självplock är pausat just nu",
+  "sjalvplock_locked_text": "Just nu erbjuds inget självplock. Följ mig på Instagram och Facebook så får du veta när odlingen öppnar igen!"
 }

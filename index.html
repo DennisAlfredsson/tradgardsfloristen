@@ -687,27 +687,27 @@
     <!-- KLICKBARA RUTOR -->
     <div class="services-grid">
       <a href="#blommor" class="service-card">
-        <img src="images/bukett.jpg" alt="Blommor" loading="lazy" />
+        <img id="serviceImg1" src="images/bukett.jpg" alt="Blommor" loading="lazy" />
         <div class="service-card-body">
           <div class="service-icon">💐</div>
-          <h3>Blommor</h3>
-          <p>Självplock och workshops under rätt säsong. Lokalt odlade snittblommor från min trädgård.</p>
+          <h3 id="serviceTitle1">Blommor</h3>
+          <p id="serviceText1">Självplock och workshops under rätt säsong. Lokalt odlade snittblommor från min trädgård.</p>
         </div>
       </a>
       <a href="#gronsaker" class="service-card">
-        <img src="images/gronsakslada.jpg" alt="Grönsakslåda" loading="lazy" />
+        <img id="serviceImg2" src="images/gronsakslada.jpg" alt="Grönsakslåda" loading="lazy" />
         <div class="service-card-body">
           <div class="service-icon">🥬</div>
-          <h3>Grönsaker</h3>
-          <p>Veckolåda med lokalodlade grönsaker. Beställ för avhämtning under sommarsäsongen.</p>
+          <h3 id="serviceTitle2">Grönsaker</h3>
+          <p id="serviceText2">Veckolåda med lokalodlade grönsaker. Beställ för avhämtning under sommarsäsongen.</p>
         </div>
       </a>
       <a href="#workshops" class="service-card">
-        <img src="images/workshop-lokal.jpg" alt="Workshop-lokal" loading="lazy" />
+        <img id="serviceImg3" src="images/workshop-lokal.jpg" alt="Workshop-lokal" loading="lazy" />
         <div class="service-card-body">
           <div class="service-icon">✂️</div>
-          <h3>Workshops</h3>
-          <p>Lär dig binda kransar, buketter och arrangemang. Praktiska tillfällen för alla.</p>
+          <h3 id="serviceTitle3">Workshops</h3>
+          <p id="serviceText3">Lär dig binda kransar, buketter och arrangemang. Praktiska tillfällen för alla.</p>
         </div>
       </a>
     </div>
@@ -726,6 +726,15 @@
       <div>
         <div class="sp-label" id="sjalvplockTitle">Nästa självplock</div>
         <p id="sjalvplockText"><strong>Datum meddelas snart</strong> — Följ mig på Instagram för att inte missa nästa tillfälle!</p>
+      </div>
+    </div>
+
+    <!-- SJÄLVPLOCK PAUSAT (visas när show_sjalvplock = false) -->
+    <div class="sjalvplock-banner" id="sjalvplockLocked" style="display:none;">
+      <div class="sp-icon">🌷</div>
+      <div>
+        <div class="sp-label" id="sjalvplockLockedTitle">Självplock är pausat just nu</div>
+        <p id="sjalvplockLockedText">Just nu erbjuds inget självplock. Följ mig på Instagram och Facebook så får du veta när odlingen öppnar igen!</p>
       </div>
     </div>
 
@@ -843,10 +852,24 @@
     </div>
 
     <!-- WORKSHOP-BILDER -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;">
+    <div id="workshopImages" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;">
       <img src="images/midsommarkrans-lila.jpg" alt="Midsommarkrans med lila blommor" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:8px;" loading="lazy" />
       <img src="images/midsommarkrans-gul.jpg" alt="Midsommarkrans med gula och blå blommor" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:8px;" loading="lazy" />
       <img src="images/midsommarkrans-rosa.jpg" alt="Midsommarkrans med rosa och vita blommor" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:8px;" loading="lazy" />
+    </div>
+
+    <!-- WORKSHOPS PAUSAT (visas när show_workshops = false) -->
+    <div id="workshops-locked" style="display:none;" class="form-wrapper">
+      <div style="text-align:center;padding:1rem 0;">
+        <div style="font-size:3rem;margin-bottom:1rem;">✂️</div>
+        <h3 id="wsLockedTitle" style="margin-bottom:0.5rem;">Just nu finns inga aktuella workshops</h3>
+        <p id="wsLockedText" style="color:var(--text-muted);">Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps!</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.25rem;">
+          <a href="#nyhetsbrev-top" class="btn-primary" style="display:inline-block;">📬 Anmäl mejlutskick</a>
+          <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;">📸 Instagram</a>
+          <a href="https://www.facebook.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;">👍 Facebook</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -891,7 +914,6 @@
               <option value="">Välj workshop...</option>
               <option value="midsommarkrans-18jun">🌸 Midsommarkrans — 18 juni kl. 19:30</option>
               <option value="midsommarkrans-19jun">🌸 Midsommarkrans — 19 juni kl. 09:30</option>
-              <option value="annat">Jag är öppen — meddela mig om nästa!</option>
             </select>
           </div>
           <div class="form-group">
@@ -1031,6 +1053,15 @@
         if (about.tags && about.tags.length) {
           document.getElementById('aboutTags').innerHTML = about.tags.map(t => `<span class="tag">${t}</span>`).join('');
         }
+        // Tre tjänsterutor (bild + rubrik + text)
+        if (about.cards && about.cards.length) {
+          about.cards.forEach((c, i) => {
+            const n = i + 1;
+            if (c.image) { const el = document.getElementById('serviceImg' + n); if (el) el.src = c.image; }
+            if (c.title) { const el = document.getElementById('serviceTitle' + n); if (el) el.textContent = c.title; }
+            if (c.text) { const el = document.getElementById('serviceText' + n); if (el) el.textContent = c.text; }
+          });
+        }
       }
 
       // Blommor
@@ -1041,9 +1072,17 @@
         if (blommor.image1) document.getElementById('blommorImg1').src = blommor.image1;
         if (blommor.image2) document.getElementById('blommorImg2').src = blommor.image2;
         const banner = document.getElementById('sjalvplockBanner');
-        banner.style.display = blommor.show_sjalvplock ? 'flex' : 'none';
-        if (blommor.sjalvplock_title) document.getElementById('sjalvplockTitle').textContent = blommor.sjalvplock_title;
-        if (blommor.sjalvplock_text) document.getElementById('sjalvplockText').innerHTML = blommor.sjalvplock_text;
+        const spLocked = document.getElementById('sjalvplockLocked');
+        const spOn = blommor.show_sjalvplock !== false;
+        banner.style.display = spOn ? 'flex' : 'none';
+        if (spLocked) spLocked.style.display = spOn ? 'none' : 'flex';
+        if (spOn) {
+          if (blommor.sjalvplock_title) document.getElementById('sjalvplockTitle').textContent = blommor.sjalvplock_title;
+          if (blommor.sjalvplock_text) document.getElementById('sjalvplockText').innerHTML = blommor.sjalvplock_text;
+        } else {
+          if (blommor.sjalvplock_locked_title) document.getElementById('sjalvplockLockedTitle').textContent = blommor.sjalvplock_locked_title;
+          if (blommor.sjalvplock_locked_text) document.getElementById('sjalvplockLockedText').innerHTML = blommor.sjalvplock_locked_text;
+        }
       }
 
       // Grönsaker
@@ -1064,11 +1103,35 @@
       if (ws) {
         if (ws.title) document.getElementById('workshopsTitle').textContent = ws.title;
         if (ws.description) document.getElementById('workshopsDesc').textContent = ws.description;
-        if (ws.header_image) {
+
+        // Av/på-läge: visa "pausat"-ruta om show_workshops === false
+        const wsOn = ws.show_workshops !== false;
+        const lockedEl = document.getElementById('workshops-locked');
+        const listEl = document.getElementById('workshopList');
+        const imgsEl = document.getElementById('workshopImages');
+        const anmalanEl = document.getElementById('anmalan');
+        if (!wsOn) {
+          if (lockedEl) {
+            lockedEl.style.display = 'block';
+            if (ws.locked_title) document.getElementById('wsLockedTitle').textContent = ws.locked_title;
+            if (ws.locked_text) document.getElementById('wsLockedText').textContent = ws.locked_text;
+          }
+          if (listEl) listEl.style.display = 'none';
+          if (imgsEl) imgsEl.style.display = 'none';
+          document.getElementById('workshopHeaderImg').style.display = 'none';
+          if (anmalanEl) anmalanEl.style.display = 'none';
+        } else {
+          if (lockedEl) lockedEl.style.display = 'none';
+          if (listEl) listEl.style.display = '';
+          if (imgsEl) imgsEl.style.display = '';
+          if (anmalanEl) anmalanEl.style.display = '';
+        }
+
+        if (wsOn && ws.header_image) {
           document.querySelector('#workshopHeaderImg img').src = ws.header_image;
           document.getElementById('workshopHeaderImg').style.display = '';
         }
-        if (ws.items && ws.items.length) {
+        if (wsOn && ws.items && ws.items.length) {
           const list = document.getElementById('workshopList');
           list.innerHTML = ws.items.map(w => `
             <div class="workshop-card">
@@ -1091,8 +1154,7 @@
           // Also update the workshop select dropdown
           const select = document.getElementById('workshop');
           if (select) {
-            const existing = select.querySelector('option[value="annat"]');
-            // Clear all but first (placeholder) and last (annat)
+            // Clear all but first (placeholder)
             while (select.options.length > 1) select.remove(1);
             ws.items.forEach(w => {
               const opt = document.createElement('option');
@@ -1100,10 +1162,6 @@
               opt.textContent = `${w.emoji || ''} ${w.name} — ${w.date}`;
               select.appendChild(opt);
             });
-            const annatOpt = document.createElement('option');
-            annatOpt.value = 'annat';
-            annatOpt.textContent = 'Jag är öppen — meddela mig om nästa!';
-            select.appendChild(annatOpt);
           }
         }
       }

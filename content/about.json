@@ -12,5 +12,22 @@
     "🌿 Lokalodlat",
     "🥬 Grönsaker & blommor",
     "✂️ Workshops"
+  ],
+  "cards": [
+    {
+      "image": "/images/bukett.jpg",
+      "title": "Blommor",
+      "text": "Självplock och workshops under rätt säsong. Lokalt odlade snittblommor från min trädgård."
+    },
+    {
+      "image": "/images/gronsakslada.jpg",
+      "title": "Grönsaker",
+      "text": "Veckolåda med lokalodlade grönsaker. Beställ för avhämtning under sommarsäsongen."
+    },
+    {
+      "image": "/images/workshop-lokal.jpg",
+      "title": "Workshops",
+      "text": "Lär dig binda kransar, buketter och arrangemang. Praktiska tillfällen för alla."
+    }
   ]
 }

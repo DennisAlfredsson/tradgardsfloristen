@@ -36,6 +36,16 @@ collections:
             name: "tags"
             widget: "list"
             field: { label: "Tagg", name: "tag", widget: "string" }
+          - label: "Tre rutor (bild + rubrik + text)"
+            name: "cards"
+            widget: "list"
+            max: 3
+            label_singular: "Ruta"
+            hint: "De tre klickbara rutorna under Om mig. Redigera bild, rubrik och text."
+            fields:
+              - { label: "Bild", name: "image", widget: "image" }
+              - { label: "Rubrik", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
 
       - name: "blommor"
         label: "Blommor"
@@ -48,6 +58,8 @@ collections:
           - { label: "Visa självplock-banner", name: "show_sjalvplock", widget: "boolean", default: true }
           - { label: "Självplock — rubrik", name: "sjalvplock_title", widget: "string", default: "Nästa självplock" }
           - { label: "Självplock — text", name: "sjalvplock_text", widget: "string", default: "Datum meddelas snart — Följ mig på Instagram för att inte missa nästa tillfälle!" }
+          - { label: "Självplock PAUSAT — rubrik", name: "sjalvplock_locked_title", widget: "string", default: "Självplock är pausat just nu", hint: "Visas när självplock är AVstängt ovan" }
+          - { label: "Självplock PAUSAT — text", name: "sjalvplock_locked_text", widget: "text", default: "Just nu erbjuds inget självplock. Följ mig på Instagram och Facebook så får du veta när odlingen öppnar igen!", hint: "Visas när självplock är AVstängt ovan" }
 
       - name: "gronsaker"
         label: "Grönsaker"
@@ -67,6 +79,9 @@ collections:
         fields:
           - { label: "Rubrik", name: "title", widget: "string", default: "Kommande workshops" }
           - { label: "Beskrivning", name: "description", widget: "text" }
+          - { label: "Visa workshops (av = visar pausat-text)", name: "show_workshops", widget: "boolean", default: true, hint: "Stäng av när inga aktuella workshops finns — då visas pausat-texten istället för listan och anmälan." }
+          - { label: "PAUSAT — rubrik", name: "locked_title", widget: "string", default: "Just nu finns inga aktuella workshops", hint: "Visas när workshops är AVstängt ovan" }
+          - { label: "PAUSAT — text", name: "locked_text", widget: "text", default: "Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps!", hint: "Visas när workshops är AVstängt ovan" }
           - { label: "Header-bild", name: "header_image", widget: "image", required: false }
           - label: "Workshops"
             name: "items"
