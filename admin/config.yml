@@ -72,6 +72,8 @@ collections:
           - { label: "Visa beställningsformulär", name: "show_form", widget: "boolean", default: true }
           - { label: "Formulär — rubrik", name: "form_title", widget: "string", default: "Beställ grönsakslåda" }
           - { label: "Formulär — text", name: "form_text", widget: "string", default: "Jag återkommer med info om avhämtningstider och veckans innehåll." }
+          - { label: "PAUSAT — rubrik", name: "locked_title", widget: "string", default: "Beställning pausad", hint: "Visas när beställningsformuläret är AVstängt ovan" }
+          - { label: "PAUSAT — text", name: "locked_text", widget: "text", default: "Just nu finns inga grönsakslådor att beställa. Följ mig på Instagram för att få reda på när det öppnar igen!", hint: "Visas när beställningsformuläret är AVstängt ovan" }
 
       - name: "workshops"
         label: "Workshops"
@@ -83,6 +85,14 @@ collections:
           - { label: "PAUSAT — rubrik", name: "locked_title", widget: "string", default: "Just nu finns inga aktuella workshops", hint: "Visas när workshops är AVstängt ovan" }
           - { label: "PAUSAT — text", name: "locked_text", widget: "text", default: "Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps!", hint: "Visas när workshops är AVstängt ovan" }
           - { label: "Header-bild", name: "header_image", widget: "image", required: false }
+          - label: "Workshop-bilder (visas i bredd, rekommenderat 3 st)"
+            name: "images"
+            widget: "list"
+            label_singular: "Bild"
+            hint: "Bilderna under workshop-listan. Byt ut eller lägg till — ladda upp i mappen images/."
+            fields:
+              - { label: "Bild", name: "src", widget: "image" }
+              - { label: "Bildtext (tillgänglighet)", name: "alt", widget: "string", required: false }
           - label: "Workshops"
             name: "items"
             widget: "list"

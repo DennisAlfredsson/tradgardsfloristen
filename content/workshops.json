@@ -17,5 +17,19 @@
   ],
   "show_workshops": true,
   "locked_title": "Just nu finns inga aktuella workshops",
-  "locked_text": "Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps!"
+  "locked_text": "Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps!",
+  "images": [
+    {
+      "src": "/images/midsommarkrans-lila.jpg",
+      "alt": "Midsommarkrans med lila blommor"
+    },
+    {
+      "src": "/images/midsommarkrans-gul.jpg",
+      "alt": "Midsommarkrans med gula och blå blommor"
+    },
+    {
+      "src": "/images/midsommarkrans-rosa.jpg",
+      "alt": "Midsommarkrans med rosa och vita blommor"
+    }
+  ]
 }

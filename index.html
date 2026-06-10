@@ -558,7 +558,23 @@
       display: block;
       transition: transform 0.3s ease;
     }
-    .ws-collage img:hover { transform: scale(1.03); }
+    /* WORKSHOP-BILDER (3 i bredd) */
+    .workshop-images-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+    .workshop-images-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 8px;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .workshop-images-grid img { height: 150px; }
+    }
     .ws-collage img:nth-child(1) { grid-column: span 2; height: 195px; }
     .ws-collage img:nth-child(2) { height: 195px; }
     .ws-collage img:nth-child(n+3) { height: 155px; }
@@ -798,8 +814,8 @@
     <div id="gronsakslada-locked" style="display:none;" class="form-wrapper">
       <div style="text-align:center;padding:1rem 0;">
         <div style="font-size:3rem;margin-bottom:1rem;">🥬</div>
-        <h3 style="margin-bottom:0.5rem;">Beställning pausad</h3>
-        <p style="color:var(--text-muted);">Just nu finns inga grönsakslådor att beställa. Följ mig på Instagram för att få reda på när det öppnar igen!</p>
+        <h3 id="gsLockedTitle" style="margin-bottom:0.5rem;">Beställning pausad</h3>
+        <p id="gsLockedText" style="color:var(--text-muted);">Just nu finns inga grönsakslådor att beställa. Följ mig på Instagram för att få reda på när det öppnar igen!</p>
         <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;margin-top:1.25rem;">@tradgardsfloristen</a>
       </div>
     </div>
@@ -852,22 +868,21 @@
     </div>
 
     <!-- WORKSHOP-BILDER -->
-    <div id="workshopImages" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;">
-      <img src="images/midsommarkrans-lila.jpg" alt="Midsommarkrans med lila blommor" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:8px;" loading="lazy" />
-      <img src="images/midsommarkrans-gul.jpg" alt="Midsommarkrans med gula och blå blommor" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:8px;" loading="lazy" />
-      <img src="images/midsommarkrans-rosa.jpg" alt="Midsommarkrans med rosa och vita blommor" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:8px;" loading="lazy" />
+    <div id="workshopImages" class="workshop-images-grid" style="margin-top:2.5rem;">
+      <img src="images/midsommarkrans-lila.jpg" alt="Midsommarkrans med lila blommor" loading="lazy" />
+      <img src="images/midsommarkrans-gul.jpg" alt="Midsommarkrans med gula och blå blommor" loading="lazy" />
+      <img src="images/midsommarkrans-rosa.jpg" alt="Midsommarkrans med rosa och vita blommor" loading="lazy" />
     </div>
 
     <!-- WORKSHOPS PAUSAT (visas när show_workshops = false) -->
-    <div id="workshops-locked" style="display:none;" class="form-wrapper">
+    <div id="workshops-locked" style="display:none;">
       <div style="text-align:center;padding:1rem 0;">
-        <div style="font-size:3rem;margin-bottom:1rem;">✂️</div>
         <h3 id="wsLockedTitle" style="margin-bottom:0.5rem;">Just nu finns inga aktuella workshops</h3>
         <p id="wsLockedText" style="color:var(--text-muted);">Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps!</p>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.25rem;">
-          <a href="#nyhetsbrev-top" class="btn-primary" style="display:inline-block;">📬 Anmäl mejlutskick</a>
-          <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;">📸 Instagram</a>
-          <a href="https://www.facebook.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;">👍 Facebook</a>
+          <a href="#nyhetsbrev-top" class="btn-primary" style="display:inline-block;">Anmäl mejlutskick</a>
+          <a href="https://www.instagram.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;">Instagram</a>
+          <a href="https://www.facebook.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;">Facebook</a>
         </div>
       </div>
     </div>
@@ -1096,6 +1111,10 @@
         if (gs.form_text) document.getElementById('gsFormText').textContent = gs.form_text;
         document.getElementById('gronsakslada-form').style.display = gs.show_form ? 'block' : 'none';
         document.getElementById('gronsakslada-locked').style.display = gs.show_form ? 'none' : 'block';
+        if (!gs.show_form) {
+          if (gs.locked_title) document.getElementById('gsLockedTitle').textContent = gs.locked_title;
+          if (gs.locked_text) document.getElementById('gsLockedText').innerHTML = gs.locked_text;
+        }
       }
 
       // Workshops
@@ -1130,6 +1149,14 @@
         if (wsOn && ws.header_image) {
           document.querySelector('#workshopHeaderImg img').src = ws.header_image;
           document.getElementById('workshopHeaderImg').style.display = '';
+        }
+        // Tre workshop-bilder (CMS-redigerbara)
+        if (wsOn && ws.images && ws.images.length) {
+          if (imgsEl) {
+            imgsEl.innerHTML = ws.images.map(im =>
+              `<img src="${im.src}" alt="${im.alt || 'Workshop'}" loading="lazy" />`
+            ).join('');
+          }
         }
         if (wsOn && ws.items && ws.items.length) {
           const list = document.getElementById('workshopList');
