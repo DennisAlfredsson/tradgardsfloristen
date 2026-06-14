@@ -1,11 +1,11 @@
 {
-  "title": "Grönsaker",
-  "description": "Beställ en veckolåda med lokalodlade grönsaker. Grönsakerna varierar efter tillgång och säsong. Veckolådan innehåller alltid en variation av grönsaker att använda till middagen!\nAvhämtning under sommarsäsongen efter överenskommelse.",
+  "locked_text": "Just nu finns inga grönsakslådor att beställa. Följ mig på Instagram för att få reda på när det öppnar igen!",
+  "locked_title": "Beställning pausad",
+  "show_form": true,
+  "form_text": "Jag återkommer med info om avhämtningstider.",
   "image1": "/images/gronsakslada.jpg",
   "image2": "/images/tradgard-gronsaker.jpg",
-  "show_form": false,
-  "form_title": "Beställ grönsakslåda",
-  "form_text": "Jag återkommer med info om avhämtningstider.",
-  "locked_title": "Beställning pausad",
-  "locked_text": "Just nu finns inga grönsakslådor att beställa. Följ mig på Instagram för att få reda på när det öppnar igen!"
+  "title": "Grönsaker",
+  "description": "Beställ en veckolåda med lokalodlade grönsaker. Grönsakerna varierar efter tillgång och säsong. Veckolådan innehåller alltid en variation av grönsaker att använda till middagen!\nAvhämtning under sommarsäsongen efter överenskommelse.",
+  "form_title": "Beställ grönsakslåda"
 }
