@@ -1,7 +1,7 @@
 {
   "locked_text": "Just nu finns inga grönsakslådor att beställa. Följ mig på Instagram för att få reda på när det öppnar igen!",
   "locked_title": "Beställning pausad",
-  "show_form": true,
+  "show_form": false,
   "form_text": "Jag återkommer med info om avhämtningstider.",
   "image1": "/images/gronsakslada.jpg",
   "image2": "/images/tradgard-gronsaker.jpg",
