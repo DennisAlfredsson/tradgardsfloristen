@@ -2,7 +2,22 @@
   publish = "."
   command = "echo 'No build needed'"
 
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/admin/*"
   [headers.values]
     Cache-Control = "no-cache"
+
+# Signed opt-out links use this function endpoint.
+[[redirects]]
+  from = "/avsluta"
+  to = "/.netlify/functions/unsubscribe"
+  status = 200
+
+# Resend's one-click List-Unsubscribe request uses POST.
+[[redirects]]
+  from = "/avsluta-one-click"
+  to = "/.netlify/functions/unsubscribe"
+  status = 200

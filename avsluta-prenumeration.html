@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avsluta prenumeration — Trädgårdsfloristen</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+      background: #f5f0ea;
+      color: #2d2d2d;
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+    .icon { font-size: 48px; margin-bottom: 16px; }
+    h1 { margin: 0 0 16px; font-size: 22px; font-weight: normal; color: #3b5c46; }
+    p  { margin: 0 0 12px; line-height: 1.6; color: #555; }
+    a  { color: #4a7c59; }
+    .home-link {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 10px 24px;
+      background: #4a7c59;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-family: -apple-system, sans-serif;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<div class="card" id="cardOk" style="display:none;">
+  <div class="icon">🌿</div>
+  <h1>Prenumeration avslutad</h1>
+  <p>Din e-postadress har tagits bort från vår utskickslista.<br>
+     Du kommer inte att få fler nyhetsbrev från oss.</p>
+  <p>Om du ändrar dig är du alltid välkommen att prenumerera igen via vår hemsida.</p>
+  <a href="/" class="home-link">Tillbaka till startsidan</a>
+</div>
+
+<div class="card" id="cardInvalid" style="display:none;">
+  <div class="icon">⚠️</div>
+  <h1>Ogiltig länk</h1>
+  <p>Avregistreringslänken är ogiltig eller har redan använts.</p>
+  <p>Om du fortfarande vill avregistrera dig, kontakta oss på
+    <a href="mailto:elisa@tradgardsfloristen.se">elisa@tradgardsfloristen.se</a>.</p>
+  <a href="/" class="home-link">Tillbaka till startsidan</a>
+</div>
+
+<div class="card" id="cardError" style="display:none;">
+  <div class="icon">😔</div>
+  <h1>Något gick fel</h1>
+  <p>Vi kunde tyvärr inte behandla din begäran just nu. Försök igen om en stund.</p>
+  <p>Om problemet kvarstår, kontakta oss på
+    <a href="mailto:elisa@tradgardsfloristen.se">elisa@tradgardsfloristen.se</a>.</p>
+  <a href="/" class="home-link">Tillbaka till startsidan</a>
+</div>
+
+<div class="card" id="cardLoading">
+  <div class="icon">⏳</div>
+  <h1>Bearbetar din begäran…</h1>
+  <p>Ett ögonblick.</p>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get('status');
+
+  document.getElementById('cardLoading').style.display = 'none';
+
+  if (status === 'ok') {
+    document.getElementById('cardOk').style.display = 'block';
+  } else if (status === 'ogiltig') {
+    document.getElementById('cardInvalid').style.display = 'block';
+  } else if (status === 'fel') {
+    document.getElementById('cardError').style.display = 'block';
+  } else {
+    // No status param — this page was reached directly; show loading
+    // The actual unsubscription goes through the function redirect
+    document.getElementById('cardLoading').style.display = 'block';
+  }
+</script>
+</body>
+</html>
