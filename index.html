@@ -229,6 +229,7 @@
       max-width: 560px;
       margin-bottom: 3rem;
     }
+    .preserve-lines { white-space: pre-line; }
 
     /* OM MIG */
     .about-grid {
@@ -365,6 +366,20 @@
       white-space: nowrap;
     }
     .workshop-price small { font-family: 'Lato', sans-serif; font-size: 0.8rem; color: var(--text-muted); display: block; }
+
+    /* SKÖRDEBOD */
+    .skordebod-bg { background: var(--white); }
+    .skordebod-card {
+      max-width: 720px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+      padding: 2rem 2.25rem;
+    }
+    .skordebod-card p { color: var(--text-muted); margin-bottom: 1.25rem; }
+    .skordebod-card p:last-child { margin-bottom: 0; }
+    .skordebod-address { color: var(--green-dark) !important; }
 
     /* FORMULÄR */
     .form-section { background: var(--white); }
@@ -622,6 +637,7 @@
     <a href="#" class="nav-logo" style="position:absolute;left:50%;transform:translateX(-50%);"><img src="images/logo-tradgardsfloristen.png" alt="Trädgårdsfloristen" style="height:90px;width:auto;" /></a>
     <ul class="nav-links" style="flex:1;justify-content:flex-end;">
       <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#skordebod">Skördebod</a></li>
       <li><a href="#anmalan">Anmälan</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
@@ -634,6 +650,7 @@
     <a href="#blommor" onclick="this.closest('.mobile-menu').classList.remove('open')">Blommor</a>
     <a href="#gronsaker" onclick="this.closest('.mobile-menu').classList.remove('open')">Grönsaker</a>
     <a href="#workshops" onclick="this.closest('.mobile-menu').classList.remove('open')">Workshops</a>
+    <a href="#skordebod" onclick="this.closest('.mobile-menu').classList.remove('open')">Skördebod</a>
     <a href="#anmalan" onclick="this.closest('.mobile-menu').classList.remove('open')">Anmälan</a>
     <a href="#kontakt" onclick="this.closest('.mobile-menu').classList.remove('open')">Kontakt</a>
   </div>
@@ -739,7 +756,7 @@
   <div class="section-inner">
     <div class="section-label">Från trädgården</div>
     <h2 class="section-title" id="blommorTitle">Blommor</h2>
-    <p class="section-subtitle" id="blommorDesc">Lokalt odlade snittblommor från min gård i Munkedal. Under säsong erbjuder jag självplock — kom och plocka din egen bukett direkt från odlingen.</p>
+    <p class="section-subtitle preserve-lines" id="blommorDesc">Lokalt odlade snittblommor från min gård i Munkedal. Under säsong erbjuder jag självplock — kom och plocka din egen bukett direkt från odlingen.</p>
 
     <div class="sjalvplock-banner" id="sjalvplockBanner" style="display:flex;">
       <div class="sp-icon">🌷</div>
@@ -772,7 +789,7 @@
   <div class="section-inner">
     <div class="section-label">Lokalodlat</div>
     <h2 class="section-title" id="gronsakerTitle">Grönsaker</h2>
-    <p class="section-subtitle" id="gronsakerDesc">Beställ en veckolåda med lokalodlade grönsaker. Avhämtning under sommarsäsongen efter överenskommelse.</p>
+    <p class="section-subtitle preserve-lines" id="gronsakerDesc">Beställ en veckolåda med lokalodlade grönsaker. Avhämtning under sommarsäsongen efter överenskommelse.</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;align-items:start;">
       <img id="gronsakerImg1" src="images/gronsakslada.jpg" alt="Grönsakslåda" style="width:100%;border-radius:8px;object-fit:cover;height:260px;" loading="lazy" />
@@ -831,7 +848,7 @@
   <div class="section-inner">
     <div class="section-label">Lär dig något med händerna</div>
     <h2 class="section-title" id="workshopsTitle">Kommande workshops</h2>
-    <p class="section-subtitle" id="workshopsDesc">Kreativa tillfällen för dig som vill skapa — ensam, med vänner eller med jobbet. Max antal platser per tillfälle.</p>
+    <p class="section-subtitle preserve-lines" id="workshopsDesc">Kreativa tillfällen för dig som vill skapa — ensam, med vänner eller med jobbet. Max antal platser per tillfälle.</p>
 
     <div id="workshopHeaderImg" style="margin-bottom:2.5rem;border-radius:8px;overflow:hidden;display:none;">
       <img src="" alt="Workshop" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:8px;" loading="lazy" />
@@ -889,6 +906,19 @@
           <a href="https://www.facebook.com/tradgardsfloristen" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-block;">Facebook</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKÖRDEBOD -->
+<section id="skordebod" class="skordebod-bg">
+  <div class="section-inner">
+    <div class="section-label">Vid vägen</div>
+    <h2 class="section-title">Skördebod</h2>
+    <div class="skordebod-card">
+      <p>I min skördebod vid vägen hittar du färska buketter och ibland grönsaker till försäljning.</p>
+      <p>För att ha koll på när boden fylls upp, följ mig på Instagram eller Facebook.</p>
+      <p class="skordebod-address">Du kan givetvis också svänga förbi och ta en titt:<br><strong>Klevavägen 8, Munkedal.</strong><br>Betalning sker via Swish.</p>
     </div>
   </div>
 </section>
@@ -1016,6 +1046,7 @@
     <li><a href="#blommor">Blommor</a></li>
     <li><a href="#gronsaker">Grönsaker</a></li>
     <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#skordebod">Skördebod</a></li>
     <li><a href="#anmalan">Anmälan</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
     <li><a href="integritet.html">Integritetspolicy</a></li>

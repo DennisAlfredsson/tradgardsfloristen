@@ -2,6 +2,7 @@
   'use strict';
 
   const h = window.React.createElement;
+  const autoSendStatus = new Map();
 
   function plain(value) {
     if (value == null) return null;
@@ -72,9 +73,36 @@
     );
   }
 
+  async function sendOwnerCopyOnPublish({ entry, collection }) {
+    const collectionName = collection && collection.get ? collection.get('name') : '';
+    if (collectionName !== 'nyhetsbrev') return;
+    const data = plain(entry && entry.get ? entry.get('data') : null) || {};
+    if (!data.subject) throw new Error('Ämnesrad saknas — ägarprovet skickades inte.');
+
+    const key = JSON.stringify(data);
+    if (autoSendStatus.get(key) === 'sent') return;
+
+    const user = window.netlifyIdentity.currentUser();
+    if (!user) throw new Error('Nyhetsbrevet sparades, men mejlet kunde inte skickas eftersom inloggningen saknas. Logga in igen och publicera på nytt.');
+
+    const token = await user.jwt();
+    const response = await fetch('/.netlify/functions/send-newsletter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+      body: JSON.stringify({ entry: data, mode: 'test' }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok) {
+      throw new Error(result.message || result.error || `Nyhetsbrevet sparades, men mejlet misslyckades (${response.status}).`);
+    }
+    autoSendStatus.set(key, 'sent');
+    window.alert(result.message || 'Nyhetsbrevet har mejlats till elisa@tradgardsfloristen.se.');
+  }
+
   function buttonStyle(color) {
     return { display: 'inline-block', border: 0, borderRadius: 5, background: color, color: '#fff', padding: '9px 16px', fontWeight: 700, cursor: 'pointer', textDecoration: 'none' };
   }
 
   window.CMS.registerPreviewTemplate('nyhetsbrev', NewsletterPreview);
+  window.CMS.registerEventListener({ name: 'postPublish', handler: sendOwnerCopyOnPublish });
 })();
