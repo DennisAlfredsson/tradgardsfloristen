@@ -4,15 +4,14 @@
   "header_image": "",
   "items": [
     {
-      "emoji": "🌸",
-      "price_note": "per person",
-      "price": "450 kr",
-      "name": "Midsommarkrans",
-      "date": "18 juni kl. 19:30",
-      "extra": "Allt material och lättare tilltugg ingår! Inga förkunskaper krävs.",
-      "cta": "Anmäl dig",
+      "location": "Munkedal",
       "duration": "Ca 2 timmar",
-      "location": "Munkedal"
+      "price_note": "per person",
+      "cta": "Anmäl dig",
+      "name": "Höstkrans",
+      "date": "23 september kl. 18:00",
+      "price": "395kr",
+      "extra": "Allt material och fika ingår! Inga förkunskaper krävs."
     }
   ],
   "show_workshops": false,
@@ -20,16 +19,7 @@
   "locked_text": "Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps.",
   "images": [
     {
-      "src": "/images/midsommarkrans-lila.jpg",
-      "alt": "Midsommarkrans med lila blommor"
-    },
-    {
-      "src": "/images/midsommarkrans-gul.jpg",
-      "alt": "Midsommarkrans med gula och blå blommor"
-    },
-    {
-      "src": "/images/midsommarkrans-rosa.jpg",
-      "alt": "Midsommarkrans med rosa och vita blommor"
+      "src": "/images/höstkrans-24.jpeg"
     }
   ]
 }
