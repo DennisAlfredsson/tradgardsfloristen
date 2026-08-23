@@ -4,14 +4,15 @@
   "header_image": "",
   "items": [
     {
-      "location": "Munkedal",
-      "duration": "Ca 2 timmar",
+      "emoji": "🍂🌿",
       "price_note": "per person",
-      "cta": "Anmäl dig",
+      "price": "395kr",
       "name": "Höstkrans",
       "date": "23 september kl. 18:00",
-      "price": "395kr",
-      "extra": "Allt material och fika ingår! Inga förkunskaper krävs. Kläder efter väder, vi håller till på vår loge!"
+      "extra": "Allt material och fika ingår! Inga förkunskaper krävs. Kläder efter väder, vi håller till på vår loge!",
+      "cta": "Anmäl dig",
+      "duration": "Ca 2 timmar",
+      "location": "Munkedal"
     }
   ],
   "show_workshops": true,
