@@ -25,6 +25,23 @@ const {
 
 const { _verifyToken: verifyUnsubToken } = require('../unsubscribe');
 
+const AUTH_CONTEXT = { clientContext: { user: { email: 'elisa@tradgardsfloristen.se' } } };
+
+function envSnapshot() {
+  return {
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    NETLIFY_API_TOKEN: process.env.NETLIFY_API_TOKEN,
+    NEWSLETTER_UNSUBSCRIBE_SECRET: process.env.NEWSLETTER_UNSUBSCRIBE_SECRET,
+  };
+}
+
+function restoreEnv(snapshot) {
+  for (const [key, value] of Object.entries(snapshot)) {
+    if (value === undefined) delete process.env[key];
+    else process.env[key] = value;
+  }
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 // 1. HTML escaping
 // ────────────────────────────────────────────────────────────────────────────
@@ -309,6 +326,40 @@ describe('send-newsletter handler — subscriber privacy', () => {
     for (const e of errors) {
       assert.equal(e.email, '[dold]', 'email must be hidden in error entries');
       assert.ok(!e.email.includes('@'), 'actual email address must not appear');
+    }
+  });
+});
+
+describe('send-newsletter handler — recipient count preview', () => {
+  test('count mode returns the deduplicated count without requiring Resend configuration', async () => {
+    const snapshot = envSnapshot();
+    const originalFetch = global.fetch;
+    delete process.env.RESEND_API_KEY;
+    delete process.env.NEWSLETTER_UNSUBSCRIBE_SECRET;
+    process.env.NETLIFY_API_TOKEN = 'netlify-test-token';
+    let calls = 0;
+    global.fetch = async () => {
+      calls++;
+      return {
+        ok: true,
+        json: async () => [
+          { data: { email: 'a@example.com' } },
+          { data: { email: 'A@example.com' } },
+          { data: { email: 'b@example.com' } },
+        ],
+      };
+    };
+    try {
+      const response = await require('../send-newsletter').handler({
+        httpMethod: 'POST',
+        body: JSON.stringify({ entry: { subject: 'Test' }, mode: 'count' }),
+      }, AUTH_CONTEXT);
+      assert.equal(response.statusCode, 200);
+      assert.deepEqual(JSON.parse(response.body), { ok: true, count: 2 });
+      assert.equal(calls, 1, 'count mode should only call Netlify Forms');
+    } finally {
+      global.fetch = originalFetch;
+      restoreEnv(snapshot);
     }
   });
 });

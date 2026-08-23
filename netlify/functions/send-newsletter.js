@@ -4,7 +4,7 @@
  * POST /.netlify/functions/send-newsletter
  * Body (JSON): { entry, mode }
  *   entry: CMS newsletter entry object
- *   mode: "test" | "production"
+ *   mode: "count" | "test" | "production"
  * Headers: Authorization: Bearer <netlify-identity-jwt>
  *
  * Reads subscribers from Netlify Forms (form: newsletter-top).
@@ -168,7 +168,7 @@ exports.handler = async function (event, context) {
   try {
     const parsed = JSON.parse(event.body || '{}');
     entry = parsed.entry;
-    mode = parsed.mode; // "test" | "production"
+    mode = parsed.mode; // "count" | "test" | "production"
   } catch {
     return {
       statusCode: 400,
@@ -180,9 +180,11 @@ exports.handler = async function (event, context) {
   // 3. Mode-specific env check (fail closed with useful messages)
   let RESEND_API_KEY, NETLIFY_API_TOKEN, NEWSLETTER_UNSUBSCRIBE_SECRET;
   try {
-    RESEND_API_KEY = requireEnv('RESEND_API_KEY');
-    NEWSLETTER_UNSUBSCRIBE_SECRET = requireEnv('NEWSLETTER_UNSUBSCRIBE_SECRET');
-    if (mode === 'production') NETLIFY_API_TOKEN = requireEnv('NETLIFY_API_TOKEN');
+    if (mode === 'count' || mode === 'production') NETLIFY_API_TOKEN = requireEnv('NETLIFY_API_TOKEN');
+    if (mode === 'test' || mode === 'production') {
+      RESEND_API_KEY = requireEnv('RESEND_API_KEY');
+      NEWSLETTER_UNSUBSCRIBE_SECRET = requireEnv('NEWSLETTER_UNSUBSCRIBE_SECRET');
+    }
   } catch (err) {
     return {
       statusCode: 503,
@@ -200,11 +202,11 @@ exports.handler = async function (event, context) {
     };
   }
 
-  if (mode !== 'test' && mode !== 'production') {
+  if (mode !== 'count' && mode !== 'test' && mode !== 'production') {
     return {
       statusCode: 400,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'mode måste vara "test" eller "production".' }),
+      body: JSON.stringify({ error: 'mode måste vara "count", "test" eller "production".' }),
     };
   }
 
@@ -216,7 +218,7 @@ exports.handler = async function (event, context) {
   if (mode === 'test') {
     recipients = [ELISA_EMAIL];
   } else {
-    // production — fetch from Netlify Forms
+    // count/production — fetch from Netlify Forms
     let rawEmails;
     try {
       rawEmails = await fetchSubscribers(NETLIFY_API_TOKEN, SITE_ID);
@@ -233,6 +235,13 @@ exports.handler = async function (event, context) {
         statusCode: 409,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ error: `Listan har ${recipients.length} prenumeranter. Säkerhetsgränsen är ${MAX_RECIPIENTS}; inget skickades.` }),
+      };
+    }
+    if (mode === 'count') {
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ok: true, count: recipients.length }),
       };
     }
     if (recipients.length === 0) {
@@ -293,7 +302,7 @@ exports.handler = async function (event, context) {
 
   const message = mode === 'test'
     ? `Test skickat till ${ELISA_EMAIL}`
-    : `Skickat till ${sent} prenumeranter`;
+    : `Nyhetsbrevet skickades till ${sent} prenumeranter.`;
 
   return {
     statusCode: 200,
