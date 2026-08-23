@@ -51,6 +51,15 @@ test('formats successful production result clearly', () => {
   );
 });
 
+test('rejects malformed count responses before showing a confirmation', () => {
+  const { context } = loadAdminScript();
+  assert.equal(context.window.__newsletterTest.validRecipientCount(undefined), false);
+  assert.equal(context.window.__newsletterTest.validRecipientCount(-1), false);
+  assert.equal(context.window.__newsletterTest.validRecipientCount(2.5), false);
+  assert.equal(context.window.__newsletterTest.validRecipientCount(0), true);
+  assert.equal(context.window.__newsletterTest.validRecipientCount(24), true);
+});
+
 test('renders the live draft preview and both manual send buttons', () => {
   const { registrations } = loadAdminScript();
   const component = registrations.previews[0][1];

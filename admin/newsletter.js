@@ -17,7 +17,11 @@
     return result.message || result.error || 'Utskicket misslyckades.';
   }
 
-  window.__newsletterTest = { buildConfirmation, formatResult };
+  function validRecipientCount(count) {
+    return Number.isInteger(count) && count >= 0;
+  }
+
+  window.__newsletterTest = { buildConfirmation, formatResult, validRecipientCount };
 
   function init() {
     const CMS = window.CMS;
@@ -39,8 +43,11 @@
         body: JSON.stringify({ entry, mode }),
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || (mode !== 'count' && !result.ok)) {
+      if (!response.ok || !result.ok) {
         throw new Error(result.message || result.error || `Begäran misslyckades (${response.status}).`);
+      }
+      if (mode === 'count' && !validRecipientCount(result.count)) {
+        throw new Error('Kunde inte läsa ett giltigt antal prenumeranter. Inget skickades.');
       }
       return result;
     }
@@ -109,7 +116,7 @@
             h('h2', { style: { marginTop: 0, color: '#3b5c46' } }, 'Bekräfta utskick'),
             h('p', { style: { whiteSpace: 'pre-line', lineHeight: 1.7 } }, buildConfirmation(confirmation.subject, confirmation.count)),
             h('button', { disabled: this.state.busy, onClick: () => this.setState({ confirmation: null }), style: buttonStyle('#777') }, 'Avbryt'),
-            h('button', { disabled: this.state.busy || confirmation.count === 0, onClick: this.confirmProduction, style: Object.assign({}, buttonStyle('#a93226'), { marginLeft: 8 }) }, `Ja, skicka till ${confirmation.count}`)
+            h('button', { disabled: this.state.busy || !validRecipientCount(confirmation.count) || confirmation.count === 0, onClick: this.confirmProduction, style: Object.assign({}, buttonStyle('#a93226'), { marginLeft: 8 }) }, `Ja, skicka till ${confirmation.count}`)
           )
         ) : null;
 
@@ -152,7 +159,7 @@
   function boot() {
     if (init()) return;
     attempts += 1;
-    if (attempts >= 100) return showLoadError();
+    if (attempts >= 300) return showLoadError();
     setTimeout(boot, 100);
   }
 
