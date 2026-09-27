@@ -1,36 +1,39 @@
 ---
-subject: Hösthälsning från odlingen!
+subject: Höst i odlingen och adventpysslet närmar sig!
 greeting: Hej!
-intro: >+
-  
-  Först och främst vill jag säga ett stort tack till er alla som följer mig, delar mina inlägg och handlar i min skördebod. Det betyder oerhört mycket och gör det möjligt för mig att fortsätta odla, skapa och utveckla verksamheten. Tack för att ni är med på resan!
-
-
-
-
+intro: >
+  Först och främst vill jag säga ett stort tack till er alla som följer mig,
+  delar mina inlägg och handlar i min skördebod. Det betyder oerhört mycket och
+  gör det möjligt för mig att fortsätta odla, skapa och utveckla verksamheten.
+  Tack för att ni är med på resan!
 sections:
   - title: Missade du höstkrans-workshopen?
     body: >
-      Efter en fantastisk höst-workshop finns nu en ny möjlighet för dig som
-      inte hann vara med. Jag har inlett ett samarbete med ABF. Via deras
-      hemsida kan du anmäla dig till en höstkrans workshop den 21 oktober 17.30.
-      Anmälan sker via ABF:s hemsida, där det även finns möjlighet att anmäla
-      sig till en julkrans-workshop den 22 november 11.00. Välkomna!
+      Efter en fantastisk höst-workshop finns nu en ny möjlighet att vara med på
+      en höstkrans-workshop på min loge.
+
+      Jag har inlett ett samarbete med ABF. Via deras hemsida kan du anmäla dig till en höstkrans-workshop den 21 oktober 17.30. Länk:
+
+      https://www.abf.se/fyrbodal/kurs/bindning-av-hostkransar-3949798/
 
 
-      Utöver de kan du också anmäla dig till mina egna workshops:
+      Där det även finns möjlighet att anmäla sig till en julkrans-workshop den 22 november 11.00. Länk:
 
-
+      https://www.abf.se/fyrbodal/kurs/bindning-av-julkransar-3949821/
+    image: /images/höstkrans.jpeg
+  - body: |
+      
       JULKRANS- workshop
-
       📅 17 november kl. 17.30
        ⏰ Cirka 2 timmar
        ☕ Fika och något varmt i glaset ingår
        🌿 Inga förkunskaper krävs
        💰 395 kr/person
 
-      JULBOCK-workshop
-
+      👉 Boka din plats på: www.tradgardsfloristen.se
+    title: Du kan också anmäla dig till mina egna workshops!
+    image: /images/workshop-collage-4.jpg
+  - body: |-
       📅 22 november kl. 15.00
        ⏰ Cirka 4 timmar
        🥪 Något lättare att äta och något varmt i glaset ingår
@@ -38,7 +41,11 @@ sections:
        💰 495 kr/person
 
       👉 Boka din plats på: www.tradgardsfloristen.se
-    image: /images/höstkrans.jpeg
+
+      Är ni ett gäng på 10-14 personer som vill boka ett eget tillfälle? 
+      Tveka inte att höra av er så ordnar vi något för er!
+    title: Julbock-workshop
+    image: /images/julbock.jpeg
   - title: Skördeboden och blommorna
     body: >-
       Nu börjar det ta på säsongens blommor och därför fylls boden upp lite
@@ -52,10 +59,8 @@ sections:
   - title: Grönsaker i full prakt
     body: >
       Trots att tillväxten börjar gå lite långsammare står grönsakerna
-      fortfarande i full prakt.
-
-
-      För första gången i år kommer jag att erbjuda grönsakslådor!
+      fortfarande i full prakt och det tänker jag fira med att för första gången
+      i år erbjuda grönsakslådor!
 
 
       Lådorna innehåller det som trädgården har att erbjuda just nu, exempelvis: 
