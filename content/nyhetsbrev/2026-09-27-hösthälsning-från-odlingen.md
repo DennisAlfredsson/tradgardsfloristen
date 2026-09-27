@@ -79,7 +79,7 @@ sections:
 
 
       👉 Boka din grönsakslåda på: www.tradgardsfloristen.se
-    image: /images/grönsakslåda.jpeg
+    image: /images/grönsaker-m.jpeg
 outro: Tack för att ni följer, stöttar och handlar lokalt. Jag ser fram emot en
   mysig höst och advent tillsammans med er och hoppas få träffa många av er på
   kommande workshops! // Elisa 🌿
