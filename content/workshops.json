@@ -1,32 +1,41 @@
 {
   "title": "Kommande workshops",
-  "description": "Kreativa tillfällen för dig som vill skapa — ensam, med vänner eller med jobbet. \nPlatserna är begränsade, så boka gärna din plats i god tid.\n\nÄr ni fler än 8 personer och vill boka ett eget tillfälle? Hör av er till mig så ordnar vi något för bara er!\n\nPå gång just nu:",
+  "description": "Kreativa tillfällen för dig som vill skapa — ensam, med vänner eller med jobbet. \nPlatserna är begränsade, så boka gärna din plats i god tid.\n\nÄr ni fler än 10 personer och vill boka ett eget tillfälle? Hör av er till mig så ordnar vi något för bara er!\n\nPå gång just nu:",
   "header_image": "",
   "items": [
     {
-      "emoji": "🍂🌿",
-      "price_note": "per person",
-      "price": "395kr",
-      "name": "Höstkrans",
-      "date": "23 september kl. 18:00",
-      "extra": "Allt material och fika ingår! Inga förkunskaper krävs. Kläder efter väder, vi håller till på vår loge!",
-      "cta": "Anmäl dig",
+      "location": "Klevavägen 8, Munkedal",
       "duration": "Ca 2 timmar",
-      "location": "Munkedal"
+      "price_note": "per person",
+      "cta": "Anmäl dig",
+      "name": "Julkrans - workshop",
+      "date": "Tisdag 17 November 17.30",
+      "price": "395kr",
+      "extra": "Det bjuds på fika och något varmt att dricka"
+    },
+    {
+      "location": "Klevavägen 8, Munkedal",
+      "duration": "Ca 4 timmar",
+      "price_note": "per person",
+      "cta": "Anmäl dig",
+      "name": "Julbocks-workshop",
+      "date": "Söndag den 22 november",
+      "price": "495kr",
+      "extra": "Det bjuds på enklare tilltugg och något varmt att dricka."
     }
   ],
-  "show_workshops": false,
+  "show_workshops": true,
   "locked_title": "Just nu finns inga aktuella workshops",
   "locked_text": "Anmäl dig till mejlutskicket eller håll koll på Instagram och Facebook så får du veta när nästa tillfälle släpps.",
   "images": [
     {
-      "src": "/images/workshopsbild-höst-1.jpeg"
+      "src": "/images/workshop-collage-4.jpg"
     },
     {
-      "src": "/images/höstkrans-bild-2.jpeg"
+      "src": "/images/julbock.jpeg"
     },
     {
-      "src": "/images/höstkransbild-3.jpeg"
+      "src": "/images/julmys.jpeg"
     }
   ]
 }
