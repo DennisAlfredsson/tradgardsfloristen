@@ -11,7 +11,7 @@
       "name": "Julkrans - workshop",
       "date": "Tisdag 17 November 17.30",
       "price": "395kr",
-      "extra": "Det bjuds på fika och något varmt att dricka. Inga förkunskaper krävs. Kläder efter väder då vi är på en ouppvärmd loge."
+      "extra": "Allt material och fika ingår. Inga förkunskaper krävs. Kläder efter väder då vi är på en ouppvärmd loge."
     },
     {
       "location": "Klevavägen 8, Munkedal",
@@ -21,7 +21,7 @@
       "name": "Julbocks-workshop",
       "date": "Söndag den 22 november",
       "price": "495kr",
-      "extra": "Det bjuds på enklare tilltugg och något varmt att dricka. Inga förkunskaper krävs. Kläder efter väder då vi är på en ouppvärmd loge."
+      "extra": "Allt material och lättare tilltugg ingår. Inga förkunskaper krävs. Kläder efter väder då vi är på en ouppvärmd loge."
     }
   ],
   "show_workshops": true,
