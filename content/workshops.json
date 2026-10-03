@@ -4,14 +4,26 @@
   "header_image": "",
   "items": [
     {
-      "location": "Klevavägen 8, Munkedal",
-      "duration": "Ca 4 timmar",
       "price_note": "per person",
-      "cta": "Anmäl dig",
+      "price": "495kr",
       "name": "Julbocks-workshop",
       "date": "Söndag den 22 november",
-      "price": "495kr",
-      "extra": "Allt material och lättare tilltugg ingår. Inga förkunskaper krävs. Kläder efter väder då vi är på en ouppvärmd loge."
+      "extra": "Allt material och lättare tilltugg ingår. Inga förkunskaper krävs. Kläder efter väder då vi är på en ouppvärmd loge.",
+      "cta": "Anmäl dig",
+      "duration": "Ca 4 timmar",
+      "location": "Klevavägen 8, Munkedal",
+      "booking_status": "Aktiv"
+    },
+    {
+      "price_note": "per person",
+      "price": "395kr",
+      "name": "Julkrans - workshop",
+      "date": "Tisdag 17 november 17.30",
+      "extra": "Allt material och lättare tilltugg ingår. Inga förkunskaper krävs. Kläder efter väder då vi är på en ouppvärmd loge.",
+      "cta": "Anmäl dig",
+      "duration": "Ca 2 timmar",
+      "location": "Munkedal",
+      "booking_status": "Fullbokad"
     }
   ],
   "show_workshops": true,
