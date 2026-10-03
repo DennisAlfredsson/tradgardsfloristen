@@ -98,6 +98,7 @@ collections:
             widget: "list"
             fields:
               - { label: "Namn", name: "name", widget: "string" }
+              - { label: "Anmälningsstatus", name: "booking_status", widget: "select", options: ["Aktiv", "Fullbokad"], default: "Aktiv", hint: "Fullbokad låter workshopen ligga kvar synlig men stänger anmälan endast för detta tillfälle." }
               - { label: "Emoji", name: "emoji", widget: "string", required: false }
               - { label: "Datum", name: "date", widget: "string" }
               - { label: "Plats", name: "location", widget: "string", default: "Munkedal" }

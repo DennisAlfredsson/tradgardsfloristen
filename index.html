@@ -366,6 +366,19 @@
       white-space: nowrap;
     }
     .workshop-price small { font-family: 'Lato', sans-serif; font-size: 0.8rem; color: var(--text-muted); display: block; }
+    .workshop-status-full {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.6rem 1.25rem;
+      border: 2px solid #8c2f39;
+      border-radius: 4px;
+      color: #8c2f39;
+      background: #fff5f5;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
 
     /* SKÖRDEBOD */
     .skordebod-bg { background: var(--white); }
@@ -1195,6 +1208,7 @@
         }
         if (wsOn && ws.items && ws.items.length) {
           const list = document.getElementById('workshopList');
+          const isFull = w => (w.booking_status || '').toLowerCase() === 'fullbokad';
           list.innerHTML = ws.items.map(w => `
             <div class="workshop-card">
               <div class="workshop-info">
@@ -1208,7 +1222,9 @@
               </div>
               <div>
                 <div class="workshop-price">${w.price}<small>${w.price_note}</small></div>
-                <a href="#anmalan" class="btn-primary" style="display:block;text-align:center;margin-top:0.75rem;font-size:0.85rem;padding:0.6rem 1.25rem;">${w.cta}</a>
+                ${isFull(w)
+                  ? '<span class="workshop-status-full" aria-label="Denna workshop är fullbokad">FULLBOKAD</span>'
+                  : `<a href="#anmalan" class="btn-primary" style="display:block;text-align:center;margin-top:0.75rem;font-size:0.85rem;padding:0.6rem 1.25rem;">${w.cta}</a>`}
               </div>
             </div>
           `).join('');
@@ -1218,7 +1234,7 @@
           if (select) {
             // Clear all but first (placeholder)
             while (select.options.length > 1) select.remove(1);
-            ws.items.forEach(w => {
+            ws.items.filter(w => !isFull(w)).forEach(w => {
               const opt = document.createElement('option');
               opt.value = (w.name + '-' + w.date).toLowerCase().replace(/[^a-z0-9]+/g, '-');
               opt.textContent = `${w.emoji || ''} ${w.name} — ${w.date}`;
