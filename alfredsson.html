@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alfredsson — Privat</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #6B8F5E;
+      --green-light: #A8C5A0;
+      --green-dark: #4a6b3f;
+      --pink: #E8B4B8;
+      --pink-light: #F9EEED;
+      --taupe: #9C8B78;
+      --cream: #FDFAF7;
+      --white: #ffffff;
+      --text: #3a3530;
+      --text-muted: #7a7268;
+      --border: #e8e0d8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--green);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--green); }
+
+    /* MAIN */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    /* GATE / locked state */
+    .gate-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(62, 78, 55, 0.08);
+    }
+    .gate-emblem {
+      font-size: 3rem;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .gate-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+    .gate-card .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .gate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .gate-form label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: left;
+      letter-spacing: 0.03em;
+    }
+    .gate-form input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      background: var(--cream);
+      transition: border-color 0.2s;
+      text-align: center;
+    }
+    .gate-form input:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    .gate-form input.error {
+      border-color: #c0392b;
+      animation: shake 0.3s ease;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+    .gate-form button {
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.25rem;
+    }
+    .gate-form button:hover { background: var(--green-dark); }
+    .gate-error {
+      color: #c0392b;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    /* CONTENT / unlocked state */
+    .content-card {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(62, 78, 55, 0.08);
+    }
+    .content-card.visible { display: block; }
+    .content-card .welcome-banner {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .content-card .welcome-banner .emblem { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+    .content-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+    .content-card .welcome-name {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--green);
+      font-size: 1.1rem;
+    }
+    .content-card .info-box {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+      padding: 1.5rem 1.75rem;
+      margin-top: 1.5rem;
+    }
+    .content-card .info-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--green-dark);
+      margin-bottom: 0.75rem;
+    }
+    .content-card .info-box p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+    .content-card .info-box p:last-child { margin-bottom: 0; }
+    .soon-badge {
+      display: inline-block;
+      background: var(--pink-light);
+      color: var(--taupe);
+      border: 1px solid var(--pink);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .logout-link {
+      display: block;
+      text-align: center;
+      margin-top: 1.75rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .logout-link:hover { color: var(--green); }
+
+    /* FOOTER */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--green); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Trädgårdsfloristen</a>
+    <a href="/" class="nav-back">← Tillbaka till hemsidan</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- GATE (locked) -->
+  <div class="gate-card" id="gateCard">
+    <span class="gate-emblem">🌳</span>
+    <h1>Alfredsson</h1>
+    <p class="subtitle">Det här är en privat sida för Alfredssons släkt.<br>Ange ditt förnamn för att komma in.</p>
+    <div class="gate-form">
+      <label for="nameInput">Ditt förnamn</label>
+      <input
+        type="text"
+        id="nameInput"
+        placeholder="Skriv ditt namn…"
+        autocomplete="off"
+        autocapitalize="words"
+        spellcheck="false"
+      />
+      <p class="gate-error" id="gateError">Det namnet känner jag inte igen. Prova igen!</p>
+      <button type="button" onclick="tryUnlock()">Kom in →</button>
+    </div>
+  </div>
+
+  <!-- CONTENT (unlocked) -->
+  <div class="content-card" id="contentCard">
+    <div class="welcome-banner">
+      <span class="emblem">🌳</span>
+      <h1>Välkommen, <span class="welcome-name" id="welcomeName"></span>!</h1>
+    </div>
+
+    <div class="info-box">
+      <span class="soon-badge">🔜 Kommer snart</span>
+      <h2>Alfredssons släktträd</h2>
+      <p>Grokbot håller på att bygga klart vårt digitala släktträd — med Alfred Eliasson (f. 1849) och Anna Helena Karlsdotter (f. 1846) i mitten.</p>
+      <p>Här kommer du kunna utforska hela släkten, lägga till personer och se hur vi alla hänger ihop. Vi meddelar när det är klart!</p>
+    </div>
+
+    <span class="logout-link" onclick="logout()">Logga ut</span>
+  </div>
+
+</main>
+
+<footer>
+  <a href="/">tradgardsfloristen.se</a> · Privat sida · Ej för spridning
+</footer>
+
+<script>
+  // Allowed names (case-insensitive, trimmed)
+  const ALLOWED = ['ove', 'elisa', 'ninnie', 'dennis'];
+  const SESSION_KEY = 'alfredsson_name';
+
+  function tryUnlock() {
+    const input = document.getElementById('nameInput');
+    const name = (input.value || '').trim();
+    const normalized = name.toLowerCase();
+
+    if (ALLOWED.includes(normalized)) {
+      sessionStorage.setItem(SESSION_KEY, name);
+      showContent(name);
+    } else {
+      input.classList.add('error');
+      document.getElementById('gateError').style.display = 'block';
+      setTimeout(() => input.classList.remove('error'), 400);
+      input.focus();
+    }
+  }
+
+  function showContent(name) {
+    document.getElementById('gateCard').style.display = 'none';
+    const card = document.getElementById('contentCard');
+    card.classList.add('visible');
+    // Capitalize first letter
+    const display = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    document.getElementById('welcomeName').textContent = display;
+  }
+
+  function logout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    document.getElementById('contentCard').classList.remove('visible');
+    document.getElementById('gateCard').style.display = '';
+    document.getElementById('nameInput').value = '';
+    document.getElementById('gateError').style.display = 'none';
+  }
+
+  // Allow Enter key in input
+  document.getElementById('nameInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') tryUnlock();
+    // Clear error on new typing
+    this.classList.remove('error');
+    document.getElementById('gateError').style.display = 'none';
+  });
+
+  // Auto-restore session
+  const saved = sessionStorage.getItem(SESSION_KEY);
+  if (saved && ALLOWED.includes(saved.toLowerCase())) {
+    showContent(saved);
+  }
+</script>
+
+</body>
+</html>
