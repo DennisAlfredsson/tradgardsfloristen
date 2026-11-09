@@ -5,6 +5,20 @@
 [functions]
   directory = "netlify/functions"
 
+# Privat släktträdsapp. Netlify behåller den publika adressen under
+# tradgardsfloristen.se/alfredsson och proxar till den dynamiska Railway-tjänsten.
+[[redirects]]
+  from = "/alfredsson"
+  to = "https://web-production-fd306.up.railway.app/alfredsson"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/alfredsson/*"
+  to = "https://web-production-fd306.up.railway.app/alfredsson/:splat"
+  status = 200
+  force = true
+
 [[headers]]
   for = "/admin/*"
   [headers.values]
