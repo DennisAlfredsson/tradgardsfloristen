@@ -21,6 +21,9 @@ collections:
           - { label: "Underrubrik", name: "subtitle", widget: "text" }
           - { label: "Badge-text", name: "badge", widget: "string", default: "🌿 Munkedal, Bohuslän" }
           - { label: "Hero-bakgrundsbild", name: "hero_image", widget: "image", required: false }
+          - { label: "Visa Aktuellt just nu", name: "show_current", widget: "boolean", default: false, hint: "Slå på för att visa informationsrutan på startsidan. Slå av för att ta bort den utan att radera texten." }
+          - { label: "Aktuellt — rubrik", name: "current_title", widget: "string", default: "Aktuellt just nu!", required: false }
+          - { label: "Aktuellt — text", name: "current_text", widget: "text", required: false, hint: "Skriv det som händer just nu. Radbrytningar bevaras på hemsidan." }
 
       - name: "about"
         label: "Om mig"
@@ -98,14 +101,14 @@ collections:
             widget: "list"
             fields:
               - { label: "Namn", name: "name", widget: "string" }
-              - { label: "Anmälningsstatus", name: "booking_status", widget: "select", options: ["Aktiv", "Fullbokad"], default: "Aktiv", hint: "Fullbokad låter workshopen ligga kvar synlig men stänger anmälan endast för detta tillfälle." }
+              - { label: "Anmälningsstatus", name: "booking_status", widget: "select", options: [{ label: "Öppen för bokning", value: "Aktiv" }, { label: "Kommande", value: "Kommande" }, { label: "Fullbokad", value: "Fullbokad" }], default: "Aktiv", hint: "Kommande och Fullbokad är synliga på hemsidan men saknar anmälningsknapp och visas inte i formuläret." }
               - { label: "Emoji", name: "emoji", widget: "string", required: false }
-              - { label: "Datum", name: "date", widget: "string" }
-              - { label: "Plats", name: "location", widget: "string", default: "Munkedal" }
-              - { label: "Längd", name: "duration", widget: "string", default: "Ca 2 timmar" }
-              - { label: "Pris", name: "price", widget: "string" }
-              - { label: "Pristext", name: "price_note", widget: "string", default: "per person" }
-              - { label: "Extra info", name: "extra", widget: "string", required: false }
+              - { label: "Datum / period", name: "date", widget: "string", required: false, hint: "T.ex. 18 juni kl. 19:30 eller Sommaren 2027" }
+              - { label: "Plats", name: "location", widget: "string", default: "Munkedal", required: false }
+              - { label: "Längd", name: "duration", widget: "string", default: "Ca 2 timmar", required: false }
+              - { label: "Pris", name: "price", widget: "string", required: false }
+              - { label: "Pristext", name: "price_note", widget: "string", default: "per person", required: false }
+              - { label: "Extra info / meddelande", name: "extra", widget: "text", required: false, hint: "För en kommande workshop kan du t.ex. skriva: Håll utkik här och följ gärna nyhetsbrevet för att inte missa när bokningen öppnar!" }
               - { label: "CTA-text", name: "cta", widget: "string", default: "Anmäl dig" }
 
       - name: "kontakt"
