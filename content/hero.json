@@ -1,11 +1,11 @@
 {
+  "badge": "🌿 Munkedal, Bohuslän",
+  "current_title": "Aktuellt just nu!",
+  "current_text": "Lördag 28 november mellan 14-18 är det julmarknad på torget i Munkedal.\nJag kommer finnas där och erbjuda en workshop - gör din egen ljusdekoration att ta med hem.\n - 169kr/st. \n - Allt material ingår. \n - Ingen föranmälan krävs. \n\nJag kommer också sälja dörrkransar, julbockar, stjärnor och annat att dekorera hemmet med inför advent!\n\nHoppas vi ses! ",
+  "hero_image": "/images/hero-solrosor.jpg",
   "title_line1": "Blommor, grönsaker",
   "title_line2": "och hjärta — direkt",
-  "title_line3": "från trädgården",
-  "subtitle": "Välkommen till Trädgårdsfloristen. Jag är Elisa, florist och odlare i Munkedal. Här finns lokalodlade blommor, grönsaker och workshops för dig som vill lära dig något med händerna.",
-  "badge": "🌿 Munkedal, Bohuslän",
-  "hero_image": "/images/hero-solrosor.jpg",
   "show_current": true,
-  "current_title": "Aktuellt just nu!",
-  "current_text": "På lördag den 28 november hittar ni mig på Munkedals julmarknad!\n\nVälkomna till kommunhuset för en liten workshop där ni kan göra er egen ljusdekoration, eller köpa med er en färdig krans eller annat adventspynt hem.\n\nEller kom bara förbi och säg hej!"
+  "subtitle": "Välkommen till Trädgårdsfloristen. Jag är Elisa, florist och odlare i Munkedal. Här finns lokalodlade blommor, grönsaker och workshops för dig som vill lära dig något med händerna.",
+  "title_line3": "från trädgården"
 }
