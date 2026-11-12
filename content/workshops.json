@@ -24,6 +24,15 @@
       "duration": "Ca 2 timmar",
       "location": "Munkedal",
       "booking_status": "Fullbokad"
+    },
+    {
+      "booking_status": "Kommande",
+      "location": "",
+      "duration": "",
+      "price_note": "",
+      "cta": "Anmäl dig",
+      "name": "Midsommarkrans",
+      "date": "Mer information kommer... anmäl dig till nyhetsbrevet för att få information direkt i din inkorg."
     }
   ],
   "show_workshops": true,
