@@ -706,14 +706,14 @@
 <nav>
   <div class="nav-inner">
     <ul class="nav-links" style="flex:1;justify-content:flex-start;">
+      <li><a href="#om">Om mig</a></li>
       <li><a href="#skordebod">Skördebod</a></li>
       <li><a href="#blommor">Blommor</a></li>
-      <li><a href="#gronsaker">Grönsaker</a></li>
     </ul>
     <a href="#" class="nav-logo" style="position:absolute;left:50%;transform:translateX(-50%);"><img src="images/logo-tradgardsfloristen.png" alt="Trädgårdsfloristen" style="height:90px;width:auto;" /></a>
     <ul class="nav-links" style="flex:1;justify-content:flex-end;">
+      <li><a href="#gronsaker">Grönsaker</a></li>
       <li><a href="#workshops">Workshops</a></li>
-      <li><a href="#om">Om mig</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
     <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Meny">
@@ -721,11 +721,11 @@
     </button>
   </div>
   <div class="mobile-menu">
+    <a href="#om" onclick="this.closest('.mobile-menu').classList.remove('open')">Om mig</a>
     <a href="#skordebod" onclick="this.closest('.mobile-menu').classList.remove('open')">Skördebod</a>
     <a href="#blommor" onclick="this.closest('.mobile-menu').classList.remove('open')">Blommor</a>
     <a href="#gronsaker" onclick="this.closest('.mobile-menu').classList.remove('open')">Grönsaker</a>
     <a href="#workshops" onclick="this.closest('.mobile-menu').classList.remove('open')">Workshops</a>
-    <a href="#om" onclick="this.closest('.mobile-menu').classList.remove('open')">Om mig</a>
     <a href="#kontakt" onclick="this.closest('.mobile-menu').classList.remove('open')">Kontakt</a>
   </div>
 </nav>
