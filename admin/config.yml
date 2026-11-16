@@ -111,6 +111,13 @@ collections:
               - { label: "Extra info / meddelande", name: "extra", widget: "text", required: false, hint: "För en kommande workshop kan du t.ex. skriva: Håll utkik här och följ gärna nyhetsbrevet för att inte missa när bokningen öppnar!" }
               - { label: "CTA-text", name: "cta", widget: "string", default: "Anmäl dig" }
 
+      - name: "skordebod"
+        label: "Skördebod"
+        file: "content/skordebod.json"
+        fields:
+          - { label: "Bild bredvid texten", name: "image", widget: "image", required: false, hint: "Visas bredvid texten om Skördeboden (under texten på mobil). Lämna tom för att bara visa texten." }
+          - { label: "Bildtext (för tillgänglighet)", name: "alt", widget: "string", required: false, hint: "Beskriv bilden kort" }
+
       - name: "kontakt"
         label: "Kontakt"
         file: "content/kontakt.json"
@@ -144,7 +151,7 @@ collections:
     label: "🖼 Workshop-kollage"
     files:
       - name: "collage"
-        label: "Kollage — bilder intill anmälningsformuläret"
+        label: "Kollage — bilder i Workshops-delen (visas alltid)"
         file: "content/collage.json"
         fields:
           - label: "Bilder (max 8 — visas i mosaic-layout)"
@@ -152,10 +159,10 @@ collections:
             widget: "list"
             max: 8
             label_singular: "Bild"
-            hint: "Byt ut bilder här — första bilden visas dubbelt bred. Ladda upp nya bilder i mappen images/."
+            hint: "Lägg till, ta bort eller byt ut bilder här — första bilden visas dubbelt bred. Kollaget visas även när ingen workshop är öppen för bokning."
             fields:
               - { label: "Bild", name: "src", widget: "image", hint: "Välj eller ladda upp en bild" }
-              - { label: "Bildtext (för tillgänglighet)", name: "alt", widget: "string", hint: "Beskriv bilden kort" }
+              - { label: "Bildtext (för tillgänglighet)", name: "alt", widget: "string", required: false, hint: "Beskriv bilden kort" }
 
   - name: "nyhetsbrev"
     label: "📬 Nyhetsbrev"

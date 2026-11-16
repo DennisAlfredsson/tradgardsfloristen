@@ -424,6 +424,19 @@
       border-radius: 8px;
       padding: 2rem 2.25rem;
     }
+    .skordebod-grid.has-image {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .skordebod-image img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
     .skordebod-card p { color: var(--text-muted); margin-bottom: 1.25rem; }
     .skordebod-card p:last-child { margin-bottom: 0; }
     .skordebod-address { color: var(--green-dark) !important; }
@@ -614,15 +627,19 @@
     }
 
     /* WORKSHOP COLLAGE */
+    /* Flex i stället för fast rutnät: sista raden fylls ut även när antalet
+       bilder ändras i admin (med 8 bilder ser det ut exakt som förut). */
     .ws-collage {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
       gap: 5px;
       border-radius: 8px;
       overflow: hidden;
     }
+    .ws-collage:empty { display: none; }
     .ws-collage img {
-      width: 100%;
+      flex: 1 1 calc(33.333% - 4px);
+      min-width: 0;
       object-fit: cover;
       display: block;
       transition: transform 0.3s ease;
@@ -644,9 +661,13 @@
     @media (max-width: 768px) {
       .workshop-images-grid img { height: 150px; }
     }
-    .ws-collage img:nth-child(1) { grid-column: span 2; height: 195px; }
+    .ws-collage img:nth-child(1) { flex-basis: calc(66.666% - 3px); height: 195px; }
     .ws-collage img:nth-child(2) { height: 195px; }
     .ws-collage img:nth-child(n+3) { height: 155px; }
+    /* Inga öppna workshops: formuläret och dess rubrik döljs, kollaget står kvar. */
+    #anmalan.no-open-workshops .anmalan-intro,
+    #anmalan.no-open-workshops .form-wrapper { display: none; }
+    #anmalan.no-open-workshops .anmalan-grid { grid-template-columns: minmax(0, 560px); justify-content: center; }
     .anmalan-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -671,8 +692,11 @@
       .anmalan-grid { grid-template-columns: 1fr; }
       #anmalan .ws-collage, #anmalan .form-wrapper { max-width: 100%; }
       #anmalan, #anmalan .section-inner, #anmalan .anmalan-grid { max-width: 100%; overflow-x: hidden; }
-      .ws-collage img:nth-child(1) { grid-column: span 2; height: 155px; }
+      #anmalan.no-open-workshops .anmalan-grid { grid-template-columns: 1fr; }
+      .ws-collage img:nth-child(1), .ws-collage img:nth-child(2) { height: 155px; }
       .ws-collage img:nth-child(n+3) { height: 120px; }
+      .skordebod-grid.has-image { grid-template-columns: 1fr; gap: 1.5rem; }
+      .skordebod-image img { max-height: 320px; }
     }
   </style>
 </head>
@@ -682,14 +706,14 @@
 <nav>
   <div class="nav-inner">
     <ul class="nav-links" style="flex:1;justify-content:flex-start;">
-      <li><a href="#om">Om mig</a></li>
+      <li><a href="#skordebod">Skördebod</a></li>
       <li><a href="#blommor">Blommor</a></li>
       <li><a href="#gronsaker">Grönsaker</a></li>
     </ul>
     <a href="#" class="nav-logo" style="position:absolute;left:50%;transform:translateX(-50%);"><img src="images/logo-tradgardsfloristen.png" alt="Trädgårdsfloristen" style="height:90px;width:auto;" /></a>
     <ul class="nav-links" style="flex:1;justify-content:flex-end;">
       <li><a href="#workshops">Workshops</a></li>
-      <li><a href="#skordebod">Skördebod</a></li>
+      <li><a href="#om">Om mig</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
     <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Meny">
@@ -697,11 +721,11 @@
     </button>
   </div>
   <div class="mobile-menu">
-    <a href="#om" onclick="this.closest('.mobile-menu').classList.remove('open')">Om mig</a>
+    <a href="#skordebod" onclick="this.closest('.mobile-menu').classList.remove('open')">Skördebod</a>
     <a href="#blommor" onclick="this.closest('.mobile-menu').classList.remove('open')">Blommor</a>
     <a href="#gronsaker" onclick="this.closest('.mobile-menu').classList.remove('open')">Grönsaker</a>
     <a href="#workshops" onclick="this.closest('.mobile-menu').classList.remove('open')">Workshops</a>
-    <a href="#skordebod" onclick="this.closest('.mobile-menu').classList.remove('open')">Skördebod</a>
+    <a href="#om" onclick="this.closest('.mobile-menu').classList.remove('open')">Om mig</a>
     <a href="#kontakt" onclick="this.closest('.mobile-menu').classList.remove('open')">Kontakt</a>
   </div>
 </nav>
@@ -967,11 +991,14 @@
     </div>
 
     <!-- ANMÄLAN (del av Workshops) -->
-    <div id="anmalan" class="workshop-signup" style="display:none;">
+    <!-- Kollaget visas alltid. Rubriken och formuläret visas bara när minst en workshop är öppen för bokning. -->
+    <div id="anmalan" class="workshop-signup no-open-workshops">
       <div class="section-inner">
+        <div class="anmalan-intro">
         <div class="section-label">Workshop-anmälan</div>
         <h2 class="section-title">Anmäl dig</h2>
         <p class="section-subtitle">Fyll i formuläret så återkommer jag med bekräftelse och detaljinfo. <strong>Betalning sker på plats vid workshoptillfället.</strong></p>
+        </div>
 
         <div class="anmalan-grid">
 
@@ -1048,10 +1075,16 @@
   <div class="section-inner">
     <div class="section-label">Vid vägen</div>
     <h2 class="section-title">Skördebod</h2>
+    <div class="skordebod-grid" id="skordebodGrid">
     <div class="skordebod-card">
       <p>I min skördebod vid vägen hittar du färska buketter och ibland grönsaker till försäljning.</p>
       <p>För att ha koll på när boden fylls upp, följ mig på Instagram eller Facebook.</p>
       <p class="skordebod-address">Du kan givetvis också svänga förbi och ta en titt:<br><strong>Klevavägen 8, Munkedal.</strong><br>Betalning sker via Swish.</p>
+    </div>
+    <!-- Bilden hämtas från content/skordebod.json; utan bild visas bara texten. -->
+    <div class="skordebod-image" id="skordebodImage" style="display:none;">
+      <img id="skordebodImg" alt="" loading="lazy" />
+    </div>
     </div>
   </div>
 </section>
@@ -1238,12 +1271,12 @@
           if (listEl) listEl.style.display = 'none';
           if (imgsEl) imgsEl.style.display = 'none';
           document.getElementById('workshopHeaderImg').style.display = 'none';
-          if (anmalanEl) anmalanEl.style.display = 'none';
+          if (anmalanEl) anmalanEl.classList.add('no-open-workshops');
         } else {
           if (lockedEl) lockedEl.style.display = 'none';
           if (listEl) listEl.style.display = '';
           if (imgsEl) imgsEl.style.display = '';
-          if (anmalanEl) anmalanEl.style.display = ws.items && ws.items.some(isOpen) ? '' : 'none';
+          if (anmalanEl) anmalanEl.classList.toggle('no-open-workshops', !(ws.items && ws.items.some(isOpen)));
         }
 
         if (wsOn && ws.header_image) {
@@ -1299,13 +1332,26 @@
 
       // Workshop-kollage
       const collage = await fetch('/content/collage.json').then(r => r.ok ? r.json() : null).catch(() => null);
-      if (collage && collage.images && collage.images.length > 0) {
-        const container = document.getElementById('workshopCollage');
-        if (container) {
-          container.innerHTML = collage.images.map(img =>
-            `<img src="${img.src}" alt="${img.alt}" loading="lazy" />`
-          ).join('');
-        }
+      // Oberoende av workshops: kollaget visas även när ingen workshop är öppen.
+      const collageEl = document.getElementById('workshopCollage');
+      if (collageEl && collage && Array.isArray(collage.images)) {
+        collageEl.replaceChildren(...collage.images.filter(img => img && img.src).map(img => {
+          const el = document.createElement('img');
+          el.src = img.src;
+          el.alt = img.alt || '';
+          el.loading = 'lazy';
+          return el;
+        }));
+      }
+
+      // Skördebod: bild bredvid texten (CMS-redigerbar)
+      const skordebod = await fetch('/content/skordebod.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (skordebod && skordebod.image) {
+        const sbImg = document.getElementById('skordebodImg');
+        sbImg.src = skordebod.image;
+        sbImg.alt = skordebod.alt || 'Skördeboden vid vägen';
+        document.getElementById('skordebodImage').style.display = '';
+        document.getElementById('skordebodGrid').classList.add('has-image');
       }
 
       // Kontakt
