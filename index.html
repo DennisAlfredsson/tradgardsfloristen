@@ -143,7 +143,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: url('images/hero-solrosor.jpg') center center / cover no-repeat;
+      background: var(--hero-bg, url('images/hero-solrosor.jpg')) center center / cover no-repeat;
       opacity: 0.35;
     }
     .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
@@ -840,9 +840,9 @@
     <h2 class="section-title">Skördebod</h2>
     <div class="skordebod-grid" id="skordebodGrid">
     <div class="skordebod-card">
-      <p>I min skördebod vid vägen hittar du färska buketter och ibland grönsaker till försäljning.</p>
-      <p>För att ha koll på när boden fylls upp, följ mig på Instagram eller Facebook.</p>
-      <p class="skordebod-address">Du kan givetvis också svänga förbi och ta en titt:<br><strong>Klevavägen 8, Munkedal.</strong><br>Betalning sker via Swish.</p>
+      <p class="preserve-lines" id="skordebodText1">I min skördebod vid vägen hittar du färska buketter och ibland grönsaker till försäljning.</p>
+      <p class="preserve-lines" id="skordebodText2">För att ha koll på när boden fylls upp, följ mig på Instagram eller Facebook.</p>
+      <p class="skordebod-address" id="skordebodAddressBlock"><span class="preserve-lines" id="skordebodVisit">Du kan givetvis också svänga förbi och ta en titt:</span><br><strong id="skordebodAddress">Klevavägen 8, Munkedal.</strong><br><span class="preserve-lines" id="skordebodPayment">Betalning sker via Swish.</span></p>
     </div>
     <!-- Bilden hämtas från content/skordebod.json; utan bild visas bara texten. -->
     <div class="skordebod-image" id="skordebodImage" style="display:none;">
@@ -1347,6 +1347,12 @@
 
       // Skördebod: bild bredvid texten (CMS-redigerbar)
       const skordebod = await fetch('/content/skordebod.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (skordebod) {
+        // Texten (CMS-redigerbar). Fält som saknas i filen behåller standardtexten.
+        [['text1', 'skordebodText1'], ['text2', 'skordebodText2'], ['visit_text', 'skordebodVisit'], ['address', 'skordebodAddress'], ['payment', 'skordebodPayment']].forEach(([key, id]) => {
+          if (typeof skordebod[key] === 'string' && skordebod[key].trim()) document.getElementById(id).textContent = skordebod[key];
+        });
+      }
       if (skordebod && skordebod.image) {
         const sbImg = document.getElementById('skordebodImg');
         sbImg.src = skordebod.image;
