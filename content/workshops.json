@@ -4,17 +4,6 @@
   "header_image": "",
   "items": [
     {
-      "price_note": "per person",
-      "price": "395kr",
-      "name": "Julkrans - workshop",
-      "date": "Tisdag 17 november 17.30",
-      "extra": "Allt material och lättare tilltugg ingår. Inga förkunskaper krävs. Kläder efter väder då vi är på en ouppvärmd loge.",
-      "cta": "Anmäl dig",
-      "duration": "Ca 2 timmar",
-      "location": "Munkedal",
-      "booking_status": "Fullbokad"
-    },
-    {
       "booking_status": "Kommande",
       "location": "",
       "duration": "",
